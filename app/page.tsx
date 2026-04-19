@@ -8,7 +8,13 @@ export default function FreightIQLandingPage() {
               <div className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-600">
                 Built for real deliveries
               </div>
-              <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">FreightIQ</h1>
+              <>
+                <p className="text-sm font-semibold tracking-wide text-slate-500 uppercase">
+                  Know the stop before you get there
+                </p>
+
+                <h1 className="mt-2 text-4xl font-bold tracking-tight md:text-6xl">FreightIQ</h1>
+              </>
               <p className="mt-4 text-xl font-medium text-slate-700 md:text-2xl">
                 Simple, fast maps + real driver intel.
               </p>
@@ -54,6 +60,52 @@ export default function FreightIQLandingPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "80px 20px", textAlign: "center" }}>
+        <div style={{ marginBottom: "30px" }}>
+          <h2 style={{ fontSize: "32px" }}>Real delivery intel from drivers who’ve been there</h2>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "24px",
+            maxWidth: "1000px",
+            margin: "0 auto",
+          }}
+        >
+          <img
+            src="/screenshots/map.png"
+            alt="FreightIQ map view"
+            style={{
+              width: "100%",
+              borderRadius: "16px",
+              boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+            }}
+          />
+
+          <img
+            src="/screenshots/intel.png"
+            alt="Driver intel"
+            style={{
+              width: "100%",
+              borderRadius: "16px",
+              boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+            }}
+          />
+
+          <img
+            src="/screenshots/zone.png"
+            alt="Delivery zone"
+            style={{
+              width: "100%",
+              borderRadius: "16px",
+              boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
+            }}
+          />
         </div>
       </section>
 
