@@ -13,7 +13,24 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "FreightIQ",
-  description: "Simple, fast maps with real driver intel.",
+  description:
+    "Know the stop before you get there. Real delivery intel from drivers who’ve been there.",
+  openGraph: {
+    title: "FreightIQ",
+    description:
+      "Know the stop before you get there. Real delivery intel from drivers who’ve been there.",
+    url: "https://freightiqapp.com",
+    siteName: "FreightIQ",
+    images: [
+      {
+        url: "https://freightiqapp.com/screenshots/map.png",
+        width: 1200,
+        height: 630,
+        alt: "FreightIQ app preview",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
