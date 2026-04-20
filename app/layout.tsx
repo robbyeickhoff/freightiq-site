@@ -21,14 +21,6 @@ export const metadata = {
       "Know the stop before you get there. Real delivery intel from drivers who’ve been there.",
     url: "https://freightiqapp.com",
     siteName: "FreightIQ",
-    images: [
-      {
-        url: "https://freightiqapp.com/screenshots/map.png",
-        width: 1200,
-        height: 630,
-        alt: "FreightIQ app preview",
-      },
-    ],
     type: "website",
   },
 };

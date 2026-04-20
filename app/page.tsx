@@ -16,7 +16,7 @@ export default function FreightIQLandingPage() {
                 <h1 className="mt-2 text-4xl font-bold tracking-tight md:text-6xl">FreightIQ</h1>
               </>
               <p className="mt-4 text-xl font-medium text-slate-700 md:text-2xl">
-                Simple, fast maps + real driver intel.
+                Fast maps with real delivery intel.
               </p>
               <p className="mt-6 max-w-xl text-base leading-7 text-slate-600 md:text-lg">
                 FreightIQ helps drivers find stops fast, understand them quickly, and avoid bad
@@ -42,7 +42,7 @@ export default function FreightIQLandingPage() {
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
                 <div className="text-sm font-semibold text-slate-500">Driver problem</div>
                 <div className="mt-2 text-lg font-semibold">
-                  The map gets you close. It does not tell you how the delivery actually goes.
+                  A map gets you close. It does not tell you how the delivery actually goes.
                 </div>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                   FreightIQ fills that gap with practical intel from drivers: where to unload, what
@@ -181,7 +181,7 @@ export default function FreightIQLandingPage() {
               <li>• Bulletproof map flow</li>
               <li>• Clean search experience</li>
               <li>• Clear stop intel</li>
-              <li>• Simple, no-bullshit usability</li>
+              <li>• Simple, no BS usability</li>
             </ul>
           </div>
         </div>
