@@ -8,15 +8,9 @@ export default function FreightIQLandingPage() {
               <div className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-600">
                 Built for real deliveries
               </div>
-              <>
-                <p className="text-sm font-semibold tracking-wide text-slate-500 uppercase">
-                  Know the stop before you get there
-                </p>
-
-                <h1 className="mt-2 text-4xl font-bold tracking-tight md:text-6xl">FreightIQ</h1>
-              </>
+              <h1 className="mt-6 text-4xl font-bold tracking-tight md:text-6xl">FreightIQ</h1>
               <p className="mt-4 text-xl font-medium text-slate-700 md:text-2xl">
-                Fast maps with real delivery intel.
+                Simple, fast maps + real driver intel.
               </p>
               <p className="mt-6 max-w-xl text-base leading-7 text-slate-600 md:text-lg">
                 FreightIQ helps drivers find stops fast, understand them quickly, and avoid bad
@@ -42,7 +36,7 @@ export default function FreightIQLandingPage() {
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
                 <div className="text-sm font-semibold text-slate-500">Driver problem</div>
                 <div className="mt-2 text-lg font-semibold">
-                  A map gets you close. It does not tell you how the delivery actually goes.
+                  The map gets you close. It does not tell you how the delivery actually goes.
                 </div>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                   FreightIQ fills that gap with practical intel from drivers: where to unload, what
@@ -60,52 +54,6 @@ export default function FreightIQLandingPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section style={{ padding: "80px 20px", textAlign: "center" }}>
-        <div style={{ marginBottom: "30px" }}>
-          <h2 style={{ fontSize: "32px" }}>Real delivery intel from drivers who’ve been there</h2>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "24px",
-            maxWidth: "1000px",
-            margin: "0 auto",
-          }}
-        >
-          <img
-            src="/screenshots/map.png"
-            alt="FreightIQ map view"
-            style={{
-              width: "100%",
-              borderRadius: "16px",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-            }}
-          />
-
-          <img
-            src="/screenshots/intel.png"
-            alt="Driver intel"
-            style={{
-              width: "100%",
-              borderRadius: "16px",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-            }}
-          />
-
-          <img
-            src="/screenshots/zone.png"
-            alt="Delivery zone"
-            style={{
-              width: "100%",
-              borderRadius: "16px",
-              boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-            }}
-          />
         </div>
       </section>
 
@@ -181,7 +129,7 @@ export default function FreightIQLandingPage() {
               <li>• Bulletproof map flow</li>
               <li>• Clean search experience</li>
               <li>• Clear stop intel</li>
-              <li>• Simple, no BS usability</li>
+              <li>• Simple, no-bullshit usability</li>
             </ul>
           </div>
         </div>
@@ -199,10 +147,10 @@ export default function FreightIQLandingPage() {
             </div>
             <div className="md:text-right">
               <a
-                href="#"
+                href="mailto:freightiqapp@protonmail.com?subject=FreightIQ Early Access&body=Hey FreightIQ team,%0D%0A%0D%0AI’d like early access.%0D%0A%0D%0AThanks!"
                 className="inline-flex rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:opacity-90"
               >
-                Early access coming soon
+                Request Early Access
               </a>
             </div>
           </div>
