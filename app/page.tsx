@@ -147,7 +147,7 @@ export default function FreightIQLandingPage() {
             </div>
             <div className="md:text-right">
               <a
-                href="mailto:freightiqapp@protonmail.com?subject=FreightIQ Early Access&body=Hey FreightIQ team,%0D%0A%0D%0AI’d like early access to FreightIQ.%0D%0A%0D%0ADevice: iPhone / Android%0D%0APhone model:%0D%0AType of driving: local / LTL / food service / flatbed / other%0D%0AAnything specific you'd like help with?%0D%0A%0D%0AThanks!"
+                href="mailto:freightiqapp@proton.me?subject=FreightIQ Early Access&body=Hey FreightIQ team,%0D%0A%0D%0AI’d like early access to FreightIQ.%0D%0A%0D%0ADevice: iPhone / Android%0D%0APhone model:%0D%0AType of driving: local / LTL / food service / flatbed / other%0D%0AAnything specific you'd like help with?%0D%0A%0D%0AThanks!"
                 className="inline-flex rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:opacity-90"
               >
                 Request Early Access
