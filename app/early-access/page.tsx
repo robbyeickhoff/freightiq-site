@@ -1,4 +1,89 @@
+"use client";
+
+import { createClient } from "@supabase/supabase-js";
+import { FormEvent, useState } from "react";
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null;
+
 export default function EarlyAccessPage() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!supabase) {
+      setStatus("error");
+      setErrorMessage("Early Access form is not configured yet. Please try again later.");
+      return;
+    }
+
+    const formData = new FormData(event.currentTarget);
+
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const platform = String(formData.get("platform") ?? "").trim();
+    const cityState = String(formData.get("cityState") ?? "").trim();
+    const driverType = String(formData.get("driverType") ?? "").trim();
+    const notes = String(formData.get("notes") ?? "").trim();
+
+    if (!name || !email || !platform) {
+      setStatus("error");
+      setErrorMessage("Please fill out your name, email, and Android/iPhone selection.");
+      return;
+    }
+
+    setStatus("submitting");
+    setErrorMessage("");
+
+    const { error } = await supabase.from("early_access_requests").insert({
+      name,
+      email,
+      platform,
+      city_state: cityState || null,
+      driver_type: driverType || null,
+      notes: notes || null,
+    });
+
+    if (error) {
+      setStatus("error");
+      setErrorMessage("Something went wrong submitting your request. Please try again.");
+      return;
+    }
+
+    setStatus("success");
+  }
+
+  if (status === "success") {
+    return (
+      <main className="min-h-screen bg-slate-50 text-slate-950">
+        <section className="mx-auto max-w-2xl px-6 py-16">
+          <a href="/" className="text-sm font-semibold text-slate-600 hover:text-slate-950">
+            ← Back to FreightIQ
+          </a>
+
+          <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+            <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
+              Request Received
+            </p>
+
+            <h1 className="mt-3 text-3xl font-bold tracking-tight">
+              Thanks for requesting FreightIQ Early Access.
+            </h1>
+
+            <p className="mt-4 text-sm leading-6 text-slate-600">
+              Your request was submitted successfully. Early Access requests are reviewed manually.
+              If approved, you&apos;ll receive install instructions by email.
+            </p>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-slate-50 text-slate-950">
       <section className="mx-auto max-w-2xl px-6 py-16">
@@ -11,20 +96,18 @@ export default function EarlyAccessPage() {
             Early Access
           </p>
 
-          <h1 className="mt-3 text-3xl font-bold tracking-tight">
-            Request FreightIQ Early Access
-          </h1>
+          <h1 className="mt-3 text-3xl font-bold tracking-tight">Request FreightIQ Early Access</h1>
 
           <p className="mt-4 text-sm leading-6 text-slate-600">
-            FreightIQ is currently being tested with a small group of drivers. Answer a few
-            quick questions so I know what device you use and what kind of driving you do.
+            FreightIQ is currently being tested with a small group of drivers. Answer a few quick
+            questions so I know what device you use and what kind of driving you do.
           </p>
 
           <p className="mt-3 text-xs text-slate-500">
             No spam. Your information will only be used for FreightIQ Early Access communication.
           </p>
 
-          <form className="mt-8 space-y-5">
+          <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
             <div>
               <label className="block text-sm font-semibold text-slate-800" htmlFor="name">
                 Name
@@ -33,6 +116,7 @@ export default function EarlyAccessPage() {
                 id="name"
                 name="name"
                 type="text"
+                required
                 className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
                 placeholder="Your name"
               />
@@ -46,6 +130,7 @@ export default function EarlyAccessPage() {
                 id="email"
                 name="email"
                 type="email"
+                required
                 className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
                 placeholder="you@example.com"
               />
@@ -58,6 +143,7 @@ export default function EarlyAccessPage() {
               <select
                 id="platform"
                 name="platform"
+                required
                 className="mt-2 w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-slate-900"
                 defaultValue=""
               >
@@ -97,7 +183,7 @@ export default function EarlyAccessPage() {
 
             <div>
               <label className="block text-sm font-semibold text-slate-800" htmlFor="notes">
-                Anything you'd like to see in an app like this?
+                Anything you&apos;d like to see in an app like this?
               </label>
               <textarea
                 id="notes"
@@ -108,15 +194,22 @@ export default function EarlyAccessPage() {
               />
             </div>
 
+            {status === "error" ? (
+              <p className="rounded-2xl bg-red-50 px-4 py-3 text-sm font-semibold text-red-700">
+                {errorMessage}
+              </p>
+            ) : null}
+
             <button
-              type="button"
-              className="w-full rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90"
+              type="submit"
+              disabled={status === "submitting"}
+              className="w-full rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Submit Request
+              {status === "submitting" ? "Submitting..." : "Submit Request"}
             </button>
 
             <p className="text-xs leading-5 text-slate-500">
-              Early Access requests are reviewed manually. If approved, you'll receive install
+              Early Access requests are reviewed manually. If approved, you&apos;ll receive install
               instructions by email.
             </p>
           </form>
