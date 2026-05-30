@@ -36,7 +36,7 @@ export default function FreightIQLandingPage() {
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
                 <div className="text-sm font-semibold text-slate-500">Driver problem</div>
                 <div className="mt-2 text-lg font-semibold">
-                  The map gets you close. It does not tell you how the delivery actually goes.
+                  A map gets you close. It does not tell you how the delivery actually goes.
                 </div>
                 <p className="mt-3 text-sm leading-6 text-slate-600">
                   FreightIQ fills that gap with practical intel from drivers: where to unload, what
