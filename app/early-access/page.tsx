@@ -54,6 +54,23 @@ export default function EarlyAccessPage() {
       return;
     }
 
+    const { error: notifyError } = await supabase.functions.invoke("notify-early-access", {
+      body: {
+        name,
+        email,
+        platform,
+        cityState,
+        driverType,
+        notes,
+      },
+    });
+
+    if (notifyError) {
+      setStatus("error");
+      setErrorMessage(`Request saved, but notification failed: ${notifyError.message}`);
+      return;
+    }
+
     setStatus("success");
   }
 
