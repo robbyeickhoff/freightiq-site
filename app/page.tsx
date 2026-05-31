@@ -16,22 +16,30 @@ export default function FreightIQLandingPage() {
                 FreightIQ helps drivers find stops fast, understand them quickly, and avoid bad
                 surprises like construction, tight access, or temporary delivery issues.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8">
                 <a
-                  href="#how-it-works"
-                  className="rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+                  href="/early-access"
+                  className="inline-flex rounded-2xl bg-orange-500 px-6 py-4 text-base font-bold text-white shadow-sm transition hover:bg-orange-600"
                 >
-                  See how it works
+                  Request Early Access
                 </a>
-                <a
-                  href="#mission"
-                  className="rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
-                >
-                  Why FreightIQ exists
-                </a>
+
+                <div className="mt-4 flex flex-wrap gap-4">
+                  <a
+                    href="#how-it-works"
+                    className="rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
+                  >
+                    See how it works
+                  </a>
+                  <a
+                    href="#mission"
+                    className="rounded-2xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+                  >
+                    Why FreightIQ exists
+                  </a>
+                </div>
               </div>
             </div>
-
             <div className="grid gap-4">
               <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
                 <div className="text-sm font-semibold text-slate-500">Driver problem</div>
