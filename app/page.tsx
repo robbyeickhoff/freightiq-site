@@ -30,10 +30,10 @@ export default function FreightIQLandingPage() {
 
                 <div className="mt-4 flex flex-wrap gap-4">
                   <a
-                    href="#how-it-works"
+                    href="/demo"
                     className="rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-90"
                   >
-                    See how it works
+                    See How FreightIQ Works
                   </a>
                   <a
                     href="#mission"
