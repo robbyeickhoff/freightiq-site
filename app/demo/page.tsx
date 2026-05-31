@@ -82,11 +82,15 @@ export default function DemoPage() {
         <div className="mt-8 grid gap-8 md:grid-cols-3">
           <div className="rounded-3xl border border-slate-200 p-6">
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
-              Delivery Area Photo
+              Satellite Delivery Zone View
             </p>
-            <div className="mt-4 flex h-44 items-center justify-center rounded-2xl bg-slate-100 text-center text-sm font-semibold text-slate-500">
-              Photo of dock / receiving area
+            <div className="mt-4 flex h-44 items-center justify-center rounded-2xl bg-slate-100 px-6 text-center text-sm font-semibold text-slate-500">
+              Stop pin + delivery zone pin shown on satellite view
             </div>
+            <p className="mt-4 text-sm leading-6 text-slate-600">
+              Drivers can use satellite view to see where the delivery zone is in relation to the
+              address pin.
+            </p>
           </div>
 
           <div className="rounded-3xl border border-slate-200 p-6">
