@@ -17,6 +17,10 @@ export default function FreightIQLandingPage() {
                 surprises like construction, tight access, or temporary delivery issues.
               </p>
               <div className="mt-8">
+                <p className="mb-3 text-sm font-semibold text-orange-600">
+                  Currently accepting early drivers for testing.
+                </p>
+
                 <a
                   href="/early-access"
                   className="inline-flex rounded-2xl bg-orange-500 px-6 py-4 text-base font-bold text-white shadow-sm transition hover:bg-orange-600"
