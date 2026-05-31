@@ -164,6 +164,15 @@ export default function FreightIQLandingPage() {
               >
                 Request Early Access
               </a>
+
+              <div className="mt-4 flex justify-end gap-4 text-sm text-slate-400">
+                <a href="/privacy" className="hover:text-white">
+                  Privacy Policy
+                </a>
+                <a href="/delete-account" className="hover:text-white">
+                  Delete Account
+                </a>
+              </div>
             </div>
           </div>
         </div>
