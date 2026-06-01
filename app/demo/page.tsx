@@ -84,9 +84,16 @@ export default function DemoPage() {
             <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
               Satellite Delivery Zone View
             </p>
-            <div className="mt-4 flex h-44 items-center justify-center rounded-2xl bg-slate-100 px-6 text-center text-sm font-semibold text-slate-500">
-              Stop pin + delivery zone pin shown on satellite view
-            </div>
+            <a
+              href="/real-example"
+              className="mt-4 flex h-44 items-center justify-center rounded-2xl bg-slate-100 px-6 text-center text-sm font-semibold text-slate-500 transition hover:opacity-90"
+            >
+              <img
+                src="/real-example-annotated.jpg"
+                alt="Real FreightIQ example"
+                className="h-full w-full object-cover"
+              />
+            </a>
             <p className="mt-4 text-sm leading-6 text-slate-600">
               Drivers can use satellite view to see where the delivery zone is in relation to the
               address pin.
