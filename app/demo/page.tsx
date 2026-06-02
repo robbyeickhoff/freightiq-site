@@ -86,13 +86,19 @@ export default function DemoPage() {
             </p>
             <a
               href="/real-example"
-              className="mt-4 flex h-44 items-center justify-center rounded-2xl bg-slate-100 px-6 text-center text-sm font-semibold text-slate-500 transition hover:opacity-90"
+              className="mt-4 block overflow-hidden rounded-2xl border border-slate-200 transition hover:opacity-90"
             >
-              <img
-                src="/real-example-annotated.jpg"
-                alt="Real FreightIQ example"
-                className="h-full w-full object-cover"
-              />
+              <div className="flex h-56 items-center justify-center overflow-hidden">
+                <img
+                  src="/real-example-annotated.jpg"
+                  alt="Real FreightIQ example"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              <div className="bg-slate-950 px-4 py-3 text-center text-sm font-bold text-white">
+                View real example →
+              </div>
             </a>
             <p className="mt-4 text-sm leading-6 text-slate-600">
               Drivers can use satellite view to see where the delivery zone is in relation to the
