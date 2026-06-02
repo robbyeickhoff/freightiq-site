@@ -26,7 +26,7 @@ export default function RealExamplePage() {
 
           <div className="mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <img
-              src="/real-example-annotated.jpg"
+              src="/real-example-simple.jpg"
               alt="FreightIQ map showing a stop pin and delivery zone pin"
               className="w-full"
             />

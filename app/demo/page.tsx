@@ -90,7 +90,7 @@ export default function DemoPage() {
             >
               <div className="flex h-56 items-center justify-center overflow-hidden">
                 <img
-                  src="/real-example-annotated.jpg"
+                  src="/real-example-simple.jpg"
                   alt="Real FreightIQ example"
                   className="h-full w-full object-cover"
                 />
