@@ -96,6 +96,11 @@ export default function EarlyAccessPage() {
               Your request was submitted successfully. Early Access requests are reviewed manually.
               If approved, you&apos;ll receive install instructions by email.
             </p>
+
+            <p className="mt-4 text-sm leading-6 text-slate-600">
+              Watch your inbox. If you don&apos;t see an email from FreightIQ, check your spam or
+              promotions folder.
+            </p>
           </div>
         </section>
       </main>
