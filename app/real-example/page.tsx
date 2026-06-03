@@ -1,9 +1,13 @@
+import Link from "next/link";
 export default function RealExamplePage() {
   return (
     <main className="min-h-screen bg-white text-slate-950">
       <section className="border-b border-slate-200 bg-slate-950 text-white">
         <div className="mx-auto max-w-6xl px-6 py-16">
-          <p className="text-sm font-semibold uppercase tracking-wide text-orange-400">
+          <Link href="/" className="text-sm font-semibold text-slate-300 hover:text-white">
+            ← Back to FreightIQ
+          </Link>
+          <p className="mt-8 text-sm font-semibold uppercase tracking-wide text-orange-400">
             Real FreightIQ Example
           </p>
 

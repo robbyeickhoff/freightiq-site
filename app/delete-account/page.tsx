@@ -1,7 +1,11 @@
+import Link from "next/link";
 export default function DeleteAccountPage() {
   return (
     <main className="min-h-screen bg-slate-950 px-6 py-16 text-white">
       <div className="mx-auto max-w-3xl space-y-6">
+        <Link href="/" className="text-sm font-semibold text-slate-300 hover:text-white">
+          ← Back to FreightIQ
+        </Link>
         <h1 className="text-4xl font-bold">Delete Your FreightIQ Account</h1>
 
         <p className="text-slate-300">FreightIQ users can request account deletion at any time.</p>
