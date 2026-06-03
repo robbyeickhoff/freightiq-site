@@ -15,11 +15,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "FreightIQ",
   description: "Simple, fast maps and real driver intel for smoother deliveries.",
+  icons: {
+    icon: "/freightiq-icon.png",
+    apple: "/freightiq-icon.png",
+  },
   openGraph: {
     title: "FreightIQ",
     description: "Simple, fast maps and real driver intel for smoother deliveries.",
     url: "https://freightiqapp.com",
     siteName: "FreightIQ",
+    images: ["/freightiq-icon.png"],
     type: "website",
   },
 };
