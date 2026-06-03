@@ -157,6 +157,13 @@ export default function EarlyAccessPage() {
                 className="mt-2 w-full rounded-2xl border border-slate-300 px-4 py-3 text-sm outline-none focus:border-slate-900"
                 placeholder="you@example.com"
               />
+
+              <p className="mt-2 text-xs text-slate-500">
+                Use the email associated with the app store on your device:
+                <br />
+                • Android → Google Play Store account
+                <br />• iPhone → Apple App Store account
+              </p>
             </div>
 
             <div>
