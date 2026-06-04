@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://freightiqapp.com"),
   title: "FreightIQ",
   description: "Simple, fast maps and real driver intel for smoother deliveries.",
   icons: {
