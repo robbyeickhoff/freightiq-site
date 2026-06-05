@@ -58,10 +58,10 @@ export default function FreightIQLandingPage() {
               <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
                 <div className="text-sm font-semibold text-slate-500">What matters</div>
                 <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
-                  <li>• Fast search and map flow</li>
-                  <li>• Delivery zone clarity</li>
-                  <li>• Real driver notes</li>
-                  <li>• Fresh, recent intel you can trust</li>
+                  <li>• Preserve operational knowledge</li>
+                  <li>• Real delivery intel from drivers</li>
+                  <li>• Faster stop understanding</li>
+                  <li>• Retain knowledge when routes change</li>
                 </ul>
               </div>
             </div>
@@ -129,19 +129,19 @@ export default function FreightIQLandingPage() {
           <div className="rounded-3xl border border-slate-200 p-6">
             <h3 className="text-xl font-semibold">For drivers</h3>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-              <li>• Get there faster</li>
-              <li>• Understand the stop quicker</li>
-              <li>• Avoid getting trapped by bad conditions</li>
-              <li>• Share intel that actually helps the next driver</li>
+              <li>• Learn stops faster</li>
+              <li>• Avoid wasted time</li>
+              <li>• Build on knowledge from other drivers</li>
+              <li>• Preserve knowledge for the next driver</li>
             </ul>
           </div>
           <div className="rounded-3xl border border-slate-200 p-6">
             <h3 className="text-xl font-semibold">Current focus</h3>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-              <li>• Bulletproof map flow</li>
-              <li>• Clean search experience</li>
+              <li>• Preserves operational knowledge</li>
               <li>• Clear stop intel</li>
-              <li>• Simple, no BS usability</li>
+              <li>• Clean search experience</li>
+              <li>• Reliable driver workflow</li>
             </ul>
           </div>
         </div>
@@ -153,8 +153,9 @@ export default function FreightIQLandingPage() {
             <div>
               <h2 className="text-3xl font-bold tracking-tight">FreightIQ</h2>
               <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300">
-                Built to help drivers move faster, avoid surprises, and make deliveries smoother
-                with real-world intel that normal map apps do not give you.
+                FreightIQ is a system for preserving operational knowledge. It helps drivers
+                capture, share, and retain the real-world delivery intel that normally disappears
+                when routes change, drivers leave, or local knowledge is lost.
               </p>
             </div>
             <div className="md:text-right">
