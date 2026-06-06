@@ -131,8 +131,8 @@ export default function FreightIQLandingPage() {
             <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
               <li>• Learn stops faster</li>
               <li>• Avoid wasted time</li>
-              <li>• Build on knowledge from other drivers</li>
-              <li>• Preserve knowledge for the next driver</li>
+              <li>• Build on experience from other drivers</li>
+              <li>• Leave useful intel for the next driver</li>
             </ul>
           </div>
           <div className="rounded-3xl border border-slate-200 p-6">
@@ -155,7 +155,7 @@ export default function FreightIQLandingPage() {
               <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300">
                 FreightIQ is a system for preserving operational knowledge. It helps drivers
                 capture, share, and retain the real-world delivery intel that normally disappears
-                when routes change, drivers leave, or local knowledge is lost.
+                when routes change, drivers leave, or local expertise is lost.
               </p>
             </div>
             <div className="md:text-right">
