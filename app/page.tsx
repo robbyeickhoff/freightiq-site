@@ -58,7 +58,7 @@ export default function FreightIQLandingPage() {
               <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
                 <div className="text-sm font-semibold text-slate-500">What matters</div>
                 <ul className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
-                  <li>• Preserve operational knowledge</li>
+                  <li>• Preserve delivery knowledge when routes change</li>
                   <li>• Real delivery intel from drivers</li>
                   <li>• Faster stop understanding</li>
                   <li>• Retain knowledge when routes change</li>
@@ -138,7 +138,7 @@ export default function FreightIQLandingPage() {
           <div className="rounded-3xl border border-slate-200 p-6">
             <h3 className="text-xl font-semibold">Current focus</h3>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-600">
-              <li>• Preserves operational knowledge</li>
+              <li>• Preserve delivery knowledge</li>
               <li>• Clear stop intel</li>
               <li>• Clean search experience</li>
               <li>• Reliable driver workflow</li>
@@ -153,9 +153,9 @@ export default function FreightIQLandingPage() {
             <div>
               <h2 className="text-3xl font-bold tracking-tight">FreightIQ</h2>
               <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300">
-                FreightIQ is a system for preserving operational knowledge. It helps drivers
-                capture, share, and retain the real-world delivery intel that normally disappears
-                when routes change, drivers leave, or local expertise is lost.
+                FreightIQ helps drivers capture, share, and retain real-world delivery intel. The
+                goal is simple: make deliveries easier today while preserving the knowledge that
+                would otherwise disappear when routes change.
               </p>
             </div>
             <div className="md:text-right">
