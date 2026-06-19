@@ -93,13 +93,21 @@ export default function EarlyAccessPage() {
             </h1>
 
             <p className="mt-4 text-sm leading-6 text-slate-600">
-              Your request was submitted successfully. Early Access requests are reviewed manually.
-              If approved, you&apos;ll receive install instructions by email.
+              Your request was submitted successfully. Early Access requests are reviewed manually,
+              so it may take a little time to receive a reply.
             </p>
 
             <p className="mt-4 text-sm leading-6 text-slate-600">
-              Watch your inbox. If you don&apos;t see an email from FreightIQ, check your spam or
-              promotions folder.
+              Watch your inbox for a reply from FreightIQ with install instructions. The message
+              will come from freightiqapp@proton.me.
+            </p>
+
+            <p className="mt-4 text-sm leading-6 text-slate-600">
+              To avoid missing it, add freightiqapp@proton.me to your contacts or safe sender list.
+            </p>
+
+            <p className="mt-4 text-sm leading-6 text-slate-600">
+              If you don&apos;t see it, check your spam, promotions, or updates folder.
             </p>
           </div>
         </section>
