@@ -99,11 +99,11 @@ export default function EarlyAccessPage() {
 
             <p className="mt-4 text-sm leading-6 text-slate-600">
               Watch your inbox for a reply from FreightIQ with install instructions. The message
-              will come from freightiqapp@proton.me.
+              will come from hello@freightiqapp.com.
             </p>
 
             <p className="mt-4 text-sm leading-6 text-slate-600">
-              To avoid missing it, add freightiqapp@proton.me to your contacts or safe sender list.
+              To avoid missing it, add hello@freightiqapp.com to your contacts or safe sender list.
             </p>
 
             <p className="mt-4 text-sm leading-6 text-slate-600">

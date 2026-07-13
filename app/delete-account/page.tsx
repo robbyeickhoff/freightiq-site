@@ -14,7 +14,7 @@ export default function DeleteAccountPage() {
           <h2 className="text-2xl font-semibold">How to Request Deletion</h2>
 
           <p className="text-slate-300">
-            Send an email to freightiqapp@proton.me from the email address associated with your
+            Send an email to hello@freightiqapp.com from the email address associated with your
             FreightIQ account.
           </p>
 
@@ -44,7 +44,7 @@ export default function DeleteAccountPage() {
         <section className="space-y-3">
           <h2 className="text-2xl font-semibold">Contact</h2>
 
-          <p className="text-slate-300">freightiqapp@proton.me</p>
+          <p className="text-slate-300">hello@freightiqapp.com</p>
         </section>
 
         <p className="pt-6 text-sm text-slate-500">Last updated: May 2026</p>
