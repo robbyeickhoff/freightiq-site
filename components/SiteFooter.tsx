@@ -21,9 +21,9 @@ export default function SiteFooter() {
               <Link href="/delete-account" className="hover:text-white">
                 Delete Account
               </Link>
-              <a href="mailto:hello@freightiqapp.com" className="hover:text-white">
-                hello@freightiqapp.com
-              </a>
+              <Link href="/contact" className="hover:text-white">
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>

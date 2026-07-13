@@ -18,6 +18,9 @@ export default function SiteHeader() {
           <Link href="/early-access" className="transition-colors hover:text-slate-500">
             Early Access
           </Link>
+          <Link href="/contact" className="transition-colors hover:text-slate-500">
+            Contact
+          </Link>
         </nav>
       </div>
     </header>
