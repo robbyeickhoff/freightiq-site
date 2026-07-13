@@ -147,35 +147,23 @@ export default function FreightIQLandingPage() {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-slate-900 text-white">
-        <div className="mx-auto max-w-6xl px-6 py-14">
-          <div className="grid gap-8 md:grid-cols-2 md:items-center">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight">FreightIQ</h2>
-              <p className="mt-4 max-w-xl text-sm leading-7 text-slate-300">
-                FreightIQ helps drivers capture, share, and retain real-world delivery intel. The
-                goal is simple: make deliveries easier today while preserving the knowledge that
-                would otherwise disappear when routes change.
-              </p>
-            </div>
-            <div className="md:text-right">
-              <a
-                href="/early-access"
-                className="inline-flex rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:opacity-90"
-              >
-                Request Early Access
-              </a>
+      <section className="mx-auto max-w-6xl px-6 pb-16">
+        <div className="rounded-3xl bg-slate-950 p-8 text-center text-white md:p-12">
+          <p className="text-sm font-semibold uppercase tracking-wide text-orange-400">
+            Ready to see FreightIQ in action?
+          </p>
+          <h2 className="mt-3 text-3xl font-bold">Built for drivers who are tired of guessing.</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+            FreightIQ is currently accepting early drivers who want to help test a better way to
+            capture and share real delivery knowledge.
+          </p>
 
-              <div className="mt-4 flex justify-end gap-4 text-sm text-slate-400">
-                <a href="/privacy" className="hover:text-white">
-                  Privacy Policy
-                </a>
-                <a href="/delete-account" className="hover:text-white">
-                  Delete Account
-                </a>
-              </div>
-            </div>
-          </div>
+          <a
+            href="/early-access"
+            className="mt-6 inline-flex rounded-2xl bg-orange-500 px-6 py-4 text-base font-bold text-white transition hover:bg-orange-600"
+          >
+            Request Early Access
+          </a>
         </div>
       </section>
     </div>

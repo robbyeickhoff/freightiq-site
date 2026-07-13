@@ -1,7 +1,6 @@
 "use client";
 
 import { createClient } from "@supabase/supabase-js";
-import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -79,11 +78,7 @@ export default function EarlyAccessPage() {
     return (
       <main className="min-h-screen bg-slate-50 text-slate-950">
         <section className="mx-auto max-w-2xl px-6 py-16">
-          <Link href="/" className="text-sm font-semibold text-slate-600 hover:text-slate-950">
-            ← Back to FreightIQ
-          </Link>
-
-          <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
             <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
               Request Received
             </p>
@@ -118,11 +113,7 @@ export default function EarlyAccessPage() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-950">
       <section className="mx-auto max-w-2xl px-6 py-16">
-        <Link href="/" className="text-sm font-semibold text-slate-600 hover:text-slate-950">
-          ← Back to FreightIQ
-        </Link>
-
-        <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
           <p className="text-sm font-semibold uppercase tracking-wide text-orange-600">
             Early Access
           </p>
