@@ -16,11 +16,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://freightiqapp.com"),
-  title: "FreightIQ",
+  title: {
+    default: "FreightIQ",
+    template: "%s | FreightIQ",
+  },
   description: "Simple, fast maps and real driver intel for smoother deliveries.",
   icons: {
-    icon: "/freightiq-icon.png",
-    apple: "/freightiq-icon.png",
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "FreightIQ",
@@ -38,8 +41,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${geistMono.variable} h-full`}
+    >
+      <body className="flex min-h-full flex-col antialiased">
         <SiteHeader />
         {children}
         <SiteFooter />
