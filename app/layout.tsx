@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     description: "Simple, fast maps and real driver intel for smoother deliveries.",
     url: "https://freightiqapp.com",
     siteName: "FreightIQ",
-    images: ["/freightiq-icon.png"],
+    images: ["/freightiq-sunrise-icon-v1.png"],
     type: "website",
   },
 };
