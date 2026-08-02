@@ -21,10 +21,6 @@ export const metadata: Metadata = {
     template: "%s | FreightIQ",
   },
   description: "Simple, fast maps and real driver intel for smoother deliveries.",
-  icons: {
-    icon: "/icon.png",
-    apple: "/apple-icon.png",
-  },
   openGraph: {
     title: "FreightIQ",
     description: "Simple, fast maps and real driver intel for smoother deliveries.",
