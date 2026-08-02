@@ -21,6 +21,27 @@ export const metadata: Metadata = {
     template: "%s | FreightIQ",
   },
   description: "Simple, fast maps and real driver intel for smoother deliveries.",
+  icons: {
+    icon: [
+      {
+        url: "/freightiq-sunrise-favicon-v1.ico",
+        type: "image/x-icon",
+        sizes: "16x16 32x32 48x48 256x256",
+      },
+      {
+        url: "/freightiq-sunrise-icon-v1.png",
+        type: "image/png",
+        sizes: "1024x1024",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
+  },
   openGraph: {
     title: "FreightIQ",
     description: "Simple, fast maps and real driver intel for smoother deliveries.",
