@@ -248,17 +248,18 @@ export default function PrivacyPolicyPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-stone-950">Legacy stop photos</h3>
+                    <h3 className="text-lg font-semibold text-stone-950">
+                      Archived legacy stop photos
+                    </h3>
                     <p className="mt-2">
-                      FreightIQ may retain and display a limited number of stop photos submitted
-                      through an earlier product workflow. New photo uploads are not part of the
-                      current FreightIQ app workflow, and the current app does not request camera or
-                      photo-library access for new uploads.
+                      FreightIQ retains a limited number of stop photos submitted through an
+                      earlier product workflow. The current app does not display those archived
+                      files, accept new photo uploads, or request camera or photo-library access.
                     </p>
                     <p className="mt-3">
-                      Legacy photos may remain visible as part of shared stop intelligence until
-                      they are deleted through the applicable stop-management or account-deletion
-                      process.
+                      Access to the archived files is restricted. They are retained only while
+                      reasonably necessary to preserve historical data integrity and may be deleted
+                      separately when that retention is no longer required.
                     </p>
                   </div>
 
@@ -382,7 +383,7 @@ export default function PrivacyPolicyPage() {
                   <p>
                     When an account-deletion request is confirmed, FreightIQ deletes the account and
                     associated personal data, including the driver profile, user-linked reports and
-                    votes, and legacy photo submissions associated with that user.
+                    votes.
                   </p>
                   <p>
                     Factual stop information may remain only when it has been de-identified and can

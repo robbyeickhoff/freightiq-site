@@ -170,6 +170,7 @@ export function EarlyAccessForm() {
             name="name"
             type="text"
             autoComplete="name"
+            maxLength={120}
             required
             className={fieldClassName}
             placeholder="Your name"
@@ -188,6 +189,7 @@ export function EarlyAccessForm() {
             name="email"
             type="email"
             autoComplete="email"
+            maxLength={254}
             required
             className={fieldClassName}
             placeholder="you@example.com"
@@ -231,6 +233,7 @@ export function EarlyAccessForm() {
             id="cityState"
             name="cityState"
             type="text"
+            maxLength={120}
             className={fieldClassName}
             placeholder="City, State"
           />
@@ -247,6 +250,7 @@ export function EarlyAccessForm() {
             id="driverType"
             name="driverType"
             type="text"
+            maxLength={120}
             className={fieldClassName}
             placeholder="Local P&amp;D, linehaul, box truck, hotshot, etc."
           />
@@ -263,6 +267,7 @@ export function EarlyAccessForm() {
             id="notes"
             name="notes"
             rows={4}
+            maxLength={2000}
             className={fieldClassName}
             placeholder="Share anything that would make unfamiliar stops easier."
           />
