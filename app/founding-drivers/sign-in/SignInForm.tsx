@@ -46,7 +46,7 @@ export default function SignInForm() {
         disabled={pending}
         className="sunrise-button min-h-12 rounded-full px-6 font-semibold text-[#120b06] disabled:cursor-wait disabled:opacity-60"
       >
-        {pending ? "Checking access…" : "Sign in to Admin Dashboard"}
+        {pending ? "Checking access…" : "Sign in to Founding Drivers"}
       </button>
     </form>
   );

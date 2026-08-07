@@ -20,6 +20,10 @@ export type Profile = {
   created_at: string;
 };
 
+export type DriverProfile = Profile & {
+  profile_image_path: string | null;
+};
+
 export type Enrollment = {
   id: string;
   user_id: string;
@@ -49,6 +53,34 @@ export type Progress = {
   bonus_reward_eligible: boolean;
   earned_reward_cents: number;
   next_milestone: string;
+};
+
+export type DriverProgress = Progress & {
+  status: EnrollmentStatus;
+  start_date: string | null;
+  end_date: string | null;
+  time_zone: string;
+  active_days_remaining: number;
+  base_stops_remaining: number;
+  bonus_stops_remaining: number;
+  qualified_at: string | null;
+  permanent_founding_driver: boolean;
+  payment_status: PaymentStatus;
+  paid_at: string | null;
+};
+
+export type DriverContribution = Pick<
+  Contribution,
+  "id" | "stop_id" | "review_status" | "review_note" | "submitted_at" | "reviewed_at"
+>;
+
+export type LeaderboardEntry = {
+  leaderboard_rank: number;
+  username: string;
+  qualifying_stops: number;
+  active_days: number;
+  founding_driver: boolean;
+  has_profile_image: boolean;
 };
 
 export type Contribution = {

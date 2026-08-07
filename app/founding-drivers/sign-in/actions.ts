@@ -1,6 +1,10 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import {
+  foundingDriverAccessStatuses,
+  type FoundingDriverAccessStatus,
+} from "@/lib/founding-drivers/auth";
 import { createClient } from "@/lib/supabase/server";
 
 export type SignInState = { message: string };
@@ -26,16 +30,41 @@ export async function signIn(
   }
 
   const { data: claimsData, error: claimsError } = await supabase.auth.getClaims();
-  const { data: isAdmin, error: adminError } = await supabase.rpc(
-    "is_founding_driver_admin",
-  );
+  const userId = claimsData?.claims?.sub;
 
-  if (claimsError || typeof claimsData?.claims?.sub !== "string" || adminError || !isAdmin) {
+  if (claimsError || typeof userId !== "string") {
     await supabase.auth.signOut();
-    return {
-      message: "This FreightIQ account does not have Founding Driver admin access.",
-    };
+    return { message: "The email or password was not accepted." };
   }
 
-  redirect("/founding-drivers/admin");
+  const [{ data: isAdmin, error: adminError }, { data: enrollment, error: enrollmentError }] =
+    await Promise.all([
+      supabase.rpc("is_founding_driver_admin"),
+      supabase
+        .from("founding_driver_enrollments")
+        .select("status")
+        .eq("user_id", userId)
+        .maybeSingle(),
+    ]);
+
+  if (adminError || enrollmentError) {
+    await supabase.auth.signOut();
+    return { message: "Founding Driver access could not be verified. Please try again." };
+  }
+
+  if (isAdmin) {
+    redirect("/founding-drivers/admin");
+  }
+
+  if (
+    enrollment &&
+    foundingDriverAccessStatuses.includes(enrollment.status as FoundingDriverAccessStatus)
+  ) {
+    redirect("/founding-drivers");
+  }
+
+  await supabase.auth.signOut();
+  return {
+    message: "This FreightIQ account is not enrolled in the Founding Drivers Program.",
+  };
 }
