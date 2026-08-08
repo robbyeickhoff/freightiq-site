@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getFoundingDriverAdminContext } from "@/lib/founding-drivers/auth";
 import { loadFoundingDriverAdminDashboard } from "@/lib/founding-drivers/data";
@@ -423,11 +424,12 @@ export default async function FoundingDriverAdminPage({
                 delivery from one Supabase-backed operating view.
               </p>
             </div>
-            <form action={signOut}>
-              <button className="min-h-11 rounded-full border border-white/15 px-5 text-sm font-semibold text-stone-300 hover:border-white/30 hover:text-white">
-                Sign out
-              </button>
-            </form>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/founding-drivers/admin/referrals" className="sunrise-button inline-flex min-h-11 items-center rounded-full px-5 text-sm font-semibold text-[#120b06]">Referral Program</Link>
+              <form action={signOut}>
+                <button className="min-h-11 rounded-full border border-white/15 px-5 text-sm font-semibold text-stone-300 hover:border-white/30 hover:text-white">Sign out</button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
