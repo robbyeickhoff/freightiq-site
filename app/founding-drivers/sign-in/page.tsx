@@ -23,8 +23,8 @@ export default async function FoundingDriverAdminSignInPage() {
           Founding Drivers
         </h1>
         <p className="mt-4 text-sm leading-7 text-stone-400">
-          Sign in with the FreightIQ account enrolled in the Founding Drivers Program. Program
-          access is limited to approved members.
+          Use the same email address and password you use to sign in to the FreightIQ app. Access is
+          limited to approved Founding Drivers.
         </p>
         <SignInForm />
         <p className="mt-6 border-t border-white/10 pt-5 text-xs leading-6 text-stone-500">
