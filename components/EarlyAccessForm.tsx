@@ -50,6 +50,7 @@ export function EarlyAccessForm() {
       city_state: cityState || null,
       driver_type: driverType || null,
       notes: notes || null,
+      request_type: "early_access",
     });
 
     if (error) {
@@ -66,6 +67,7 @@ export function EarlyAccessForm() {
         cityState,
         driverType,
         notes,
+        requestType: "early_access",
       },
     });
 

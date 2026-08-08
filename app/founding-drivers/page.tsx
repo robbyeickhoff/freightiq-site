@@ -163,7 +163,7 @@ function ProgressCard({
 
 function nextMilestone(progress: DriverProgress) {
   if (progress.next_milestone === "maximum_reward") {
-    return "You reached the maximum V0 reward. Your Founding Driver impact keeps growing.";
+    return "You reached the maximum reward. Your Founding Driver impact keeps growing.";
   }
   if (progress.next_milestone === "bonus_reward") {
     return `${progress.bonus_stops_remaining} more qualifying ${

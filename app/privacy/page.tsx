@@ -42,7 +42,7 @@ const useCases = [
   "Display maps and return place-search results",
   "Store, organize, and display stop intelligence",
   "Associate contributions and votes with the appropriate accounts",
-  "Process Early Access requests",
+  "Process Early Access and Founding Drivers Program requests",
   "Respond to support questions and feedback",
   "Maintain, troubleshoot, and secure the service",
   "Investigate misuse and protect FreightIQ and its users",
@@ -63,7 +63,10 @@ const serviceProviders = [
   },
   { name: "Mapbox", purpose: "place search and proximity results" },
   { name: "Apple Maps or Google Maps", purpose: "map display and interactions" },
-  { name: "Resend", purpose: "Contact and Early Access notification emails" },
+  {
+    name: "Resend",
+    purpose: "Contact, Early Access, and Founding Drivers Program notification emails",
+  },
   { name: "Vercel", purpose: "public website hosting" },
 ];
 
@@ -268,8 +271,9 @@ export default function PrivacyPolicyPage() {
                       Website forms and communications
                     </h3>
                     <p className="mt-2">
-                      When you request Early Access, FreightIQ may collect your name, email address,
-                      mobile platform, city and state, driver type, and optional notes.
+                      When you request Early Access or consideration for the Founding Drivers
+                      Program, FreightIQ may collect your name, email address, mobile platform, city
+                      and state, driver type, request category, and optional notes.
                     </p>
                     <p className="mt-3">
                       When you use the Contact form, FreightIQ processes your name, email address,
@@ -394,9 +398,9 @@ export default function PrivacyPolicyPage() {
                     regulatory reasons may be retained only for those purposes.
                   </p>
                   <p>
-                    Contact and Early Access submissions are retained only as long as reasonably
-                    necessary to respond, administer access, maintain appropriate business records,
-                    or satisfy legal obligations.
+                    Contact, Early Access, and Founding Drivers Program submissions are retained only
+                    as long as reasonably necessary to respond, administer access, maintain
+                    appropriate business records, or satisfy legal obligations.
                   </p>
                   <p>
                     Some information may remain temporarily in routine service backups before being
