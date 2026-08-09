@@ -61,11 +61,11 @@ export default async function ReferralAdminPage({ searchParams }:{ searchParams:
             <div className="mt-5 grid gap-3 sm:grid-cols-2"><div className="rounded-2xl bg-black/20 p-4"><p className="text-xs uppercase text-stone-500">Active days</p><p className="mt-2 text-2xl font-semibold">{item.active_days} / 5</p></div><div className="rounded-2xl bg-black/20 p-4"><p className="text-xs uppercase text-stone-500">Qualifying stops</p><p className="mt-2 text-2xl font-semibold">{item.qualifying_stops} / 5</p></div></div>
             {itemContributions.map((c)=>{
               const stop=stops.get(c.stop_id);
-              const mapsUrl=stop ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${stop.lat},${stop.lng}`)}` : null;
+              const freightIqUrl=stop ? `mfi:///stop?id=${encodeURIComponent(stop.id)}&lat=${encodeURIComponent(String(stop.lat))}&lng=${encodeURIComponent(String(stop.lng))}&name=${encodeURIComponent(stop.name)}&address=${encodeURIComponent(stop.address??"")}&returnToPreview=1` : null;
               return <article key={c.id} className="mt-4 rounded-2xl border border-white/10 bg-black/10 p-4 sm:p-5">
                 <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
                   <div><h3 className="font-semibold">{stop?.name??"Unknown stop"}</h3><p className="mt-1 text-sm text-stone-400">{stop?.address??`Stop ${c.stop_id}`}</p><p className="mt-1 text-xs text-stone-500">{c.contribution_type==="new_stop"?"New stop":"Completed existing stop"} · Submitted {formatSubmitted(c.submitted_at)}</p></div>
-                  {mapsUrl?<a href={mapsUrl} target="_blank" rel="noreferrer" className="text-sm font-semibold text-amber-200">Open in Maps ↗</a>:null}
+                  {freightIqUrl?<a href={freightIqUrl} className="text-sm font-semibold text-amber-200">Open in FreightIQ →</a>:null}
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">{c.completed_fields.map((field)=><span key={field} className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-stone-300">{fieldLabel(field)}</span>)}</div>
                 <dl className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">{Object.entries(c.core_snapshot).map(([key,value])=><div key={key} className="rounded-xl border border-white/10 bg-black/20 p-3"><dt className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-stone-500">{fieldLabel(key)}</dt><dd className="mt-1 text-sm capitalize text-stone-200">{snapshotValue(key,value)}</dd></div>)}</dl>
