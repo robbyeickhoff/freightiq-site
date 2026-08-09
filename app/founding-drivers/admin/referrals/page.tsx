@@ -61,7 +61,7 @@ export default async function ReferralAdminPage({ searchParams }:{ searchParams:
             <div className="mt-5 grid gap-3 sm:grid-cols-2"><div className="rounded-2xl bg-black/20 p-4"><p className="text-xs uppercase text-stone-500">Active days</p><p className="mt-2 text-2xl font-semibold">{item.active_days} / 5</p></div><div className="rounded-2xl bg-black/20 p-4"><p className="text-xs uppercase text-stone-500">Qualifying stops</p><p className="mt-2 text-2xl font-semibold">{item.qualifying_stops} / 5</p></div></div>
             {itemContributions.map((c)=>{
               const stop=stops.get(c.stop_id);
-              const freightIqUrl=stop ? `mfi:///stop?id=${encodeURIComponent(stop.id)}&lat=${encodeURIComponent(String(stop.lat))}&lng=${encodeURIComponent(String(stop.lng))}&name=${encodeURIComponent(stop.name)}&address=${encodeURIComponent(stop.address??"")}&returnToPreview=1` : null;
+              const freightIqUrl=stop ? `mfi://stop?id=${encodeURIComponent(stop.id)}&lat=${encodeURIComponent(String(stop.lat))}&lng=${encodeURIComponent(String(stop.lng))}&name=${encodeURIComponent(stop.name)}&address=${encodeURIComponent(stop.address??"")}&returnToPreview=1` : null;
               return <article key={c.id} className="mt-4 rounded-2xl border border-white/10 bg-black/10 p-4 sm:p-5">
                 <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
                   <div><h3 className="font-semibold">{stop?.name??"Unknown stop"}</h3><p className="mt-1 text-sm text-stone-400">{stop?.address??`Stop ${c.stop_id}`}</p><p className="mt-1 text-xs text-stone-500">{c.contribution_type==="new_stop"?"New stop":"Completed existing stop"} · Submitted {formatSubmitted(c.submitted_at)}</p></div>
