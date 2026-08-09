@@ -19,12 +19,10 @@ export default async function FoundingDriverAdminSignInPage() {
       <div className="sunrise-grid absolute inset-0 opacity-25" aria-hidden="true" />
       <section className="relative mx-auto w-full max-w-md rounded-[2rem] border border-white/10 bg-[#111518]/95 p-7 shadow-[0_30px_100px_rgba(0,0,0,0.38)] sm:p-9">
         <p className="eyebrow">Members only</p>
-        <h1 className="mt-4 text-3xl font-semibold tracking-[-0.04em]">
-          Founding Drivers
-        </h1>
+        <h1 className="mt-4 text-3xl font-semibold tracking-[-0.04em]">FreightIQ Operations</h1>
         <p className="mt-4 text-sm leading-7 text-stone-400">
           Use the same email address and password you use to sign in to the FreightIQ app. Access is
-          limited to approved Founding Drivers.
+          limited to approved Founding Drivers and authorized FreightIQ moderators.
         </p>
         <SignInForm />
         <p className="mt-6 border-t border-white/10 pt-5 text-xs leading-6 text-stone-500">

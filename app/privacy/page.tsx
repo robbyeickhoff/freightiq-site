@@ -86,7 +86,10 @@ function PolicySection({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-28 border-t border-stone-300/80 pt-9 first:border-t-0 first:pt-0">
+    <section
+      id={id}
+      className="scroll-mt-28 border-t border-stone-300/80 pt-9 first:border-t-0 first:pt-0"
+    >
       <h2 className="text-2xl font-semibold tracking-[-0.035em] text-stone-950 sm:text-3xl">
         {title}
       </h2>
@@ -114,8 +117,7 @@ export default function PrivacyPolicyPage() {
             <div className="max-w-4xl">
               <p className="eyebrow">Privacy Policy</p>
               <h1 className="mt-5 text-4xl font-semibold leading-[1.04] tracking-[-0.05em] text-balance sm:text-5xl lg:text-6xl">
-                FreightIQ{" "}
-                <span className="sunrise-text block">Privacy Policy</span>
+                FreightIQ <span className="sunrise-text block">Privacy Policy</span>
               </h1>
               <p className="mt-7 max-w-3xl text-lg leading-8 text-stone-300">
                 This Privacy Policy explains how FreightIQ (“FreightIQ,” “we,” “us,” or “our”)
@@ -154,14 +156,19 @@ export default function PrivacyPolicyPage() {
             </div>
             <div className="mt-5 grid gap-4 md:grid-cols-3">
               <article className="rounded-[1.35rem] border border-white/10 bg-white/[0.035] p-5">
-                <p className="text-sm font-semibold text-white">Information that powers the service</p>
+                <p className="text-sm font-semibold text-white">
+                  Information that powers the service
+                </p>
                 <p className="mt-2 text-sm leading-6 text-stone-400">
                   FreightIQ collects information needed to operate accounts, driver profiles, shared
-                  stop intelligence, map features, Early Access requests, and support communications.
+                  stop intelligence, map features, Early Access requests, and support
+                  communications.
                 </p>
               </article>
               <article className="rounded-[1.35rem] border border-white/10 bg-white/[0.035] p-5">
-                <p className="text-sm font-semibold text-white">Foreground location, not a history</p>
+                <p className="text-sm font-semibold text-white">
+                  Foreground location, not a history
+                </p>
                 <p className="mt-2 text-sm leading-6 text-stone-400">
                   FreightIQ uses foreground location to center the map and provide nearby search
                   results. FreightIQ does not intentionally maintain continuous device-location
@@ -255,9 +262,9 @@ export default function PrivacyPolicyPage() {
                       Archived legacy stop photos
                     </h3>
                     <p className="mt-2">
-                      FreightIQ retains a limited number of stop photos submitted through an
-                      earlier product workflow. The current app does not display those archived
-                      files, accept new photo uploads, or request camera or photo-library access.
+                      FreightIQ retains a limited number of stop photos submitted through an earlier
+                      product workflow. The current app does not display those archived files,
+                      accept new photo uploads, or request camera or photo-library access.
                     </p>
                     <p className="mt-3">
                       Access to the archived files is restricted. They are retained only while
@@ -294,9 +301,7 @@ export default function PrivacyPolicyPage() {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-stone-950">
-                      Technical information
-                    </h3>
+                    <h3 className="text-lg font-semibold text-stone-950">Technical information</h3>
                     <p className="mt-2">
                       FreightIQ’s infrastructure and service providers may automatically process
                       standard technical information needed to operate and protect their services,
@@ -385,9 +390,10 @@ export default function PrivacyPolicyPage() {
                     meet legal obligations.
                   </p>
                   <p>
-                    When an account-deletion request is confirmed, FreightIQ deletes the account and
-                    associated personal data, including the driver profile, user-linked reports and
-                    votes.
+                    When permanent in-app account deletion is confirmed, FreightIQ deletes the
+                    account and associated personal data, including the driver profile, user-linked
+                    reports, votes, contacts, notes, private images, program records, referrals,
+                    safety records, and contributor attribution.
                   </p>
                   <p>
                     Factual stop information may remain only when it has been de-identified and can
@@ -398,8 +404,8 @@ export default function PrivacyPolicyPage() {
                     regulatory reasons may be retained only for those purposes.
                   </p>
                   <p>
-                    Contact, Early Access, and Founding Drivers Program submissions are retained only
-                    as long as reasonably necessary to respond, administer access, maintain
+                    Contact, Early Access, and Founding Drivers Program submissions are retained
+                    only as long as reasonably necessary to respond, administer access, maintain
                     appropriate business records, or satisfy legal obligations.
                   </p>
                   <p>
@@ -407,15 +413,15 @@ export default function PrivacyPolicyPage() {
                     removed through normal backup-retention cycles.
                   </p>
                   <p>
-                    To request account deletion, visit the{" "}
+                    To delete an account, use Profile → Settings → Delete Account in the FreightIQ
+                    app. For a summary of the process, visit the{" "}
                     <Link
                       href="/delete-account"
                       className="rounded-sm font-semibold text-orange-800 underline decoration-orange-700/30 underline-offset-4 transition-colors hover:text-orange-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-orange-700"
                     >
                       FreightIQ Delete Account page
                     </Link>
-                    . FreightIQ may verify your identity before completing a privacy or deletion
-                    request.
+                    . The signed-in session verifies the account before permanent deletion.
                   </p>
                 </PolicySection>
 
@@ -426,7 +432,9 @@ export default function PrivacyPolicyPage() {
                     account access, access controls around stored data, and established
                     infrastructure providers.
                   </p>
-                  <p>No electronic system or transmission method can be guaranteed completely secure.</p>
+                  <p>
+                    No electronic system or transmission method can be guaranteed completely secure.
+                  </p>
                 </PolicySection>
 
                 <PolicySection id="your-choices" title="Your choices and privacy requests">
@@ -447,7 +455,8 @@ export default function PrivacyPolicyPage() {
                         aria-hidden="true"
                       />
                       <span>
-                        Request deletion through the{" "}
+                        Permanently delete your signed-in account through FreightIQ Settings; see
+                        the{" "}
                         <Link
                           href="/delete-account"
                           className="rounded-sm font-semibold text-orange-800 underline decoration-orange-700/30 underline-offset-4 transition-colors hover:text-orange-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-orange-700"
@@ -488,9 +497,9 @@ export default function PrivacyPolicyPage() {
 
                 <PolicySection id="changes-to-this-policy" title="Changes to this policy">
                   <p>
-                    FreightIQ may update this Privacy Policy as the product, data practices, or legal
-                    requirements change. The revised policy will be posted on this page with an
-                    updated effective date.
+                    FreightIQ may update this Privacy Policy as the product, data practices, or
+                    legal requirements change. The revised policy will be posted on this page with
+                    an updated effective date.
                   </p>
                   <p>
                     When a change materially affects how personal information is handled, FreightIQ

@@ -14,21 +14,28 @@ export const getFoundingDriverLandingContext = cache(async () => {
     return null;
   }
 
-  const [{ data: isAdmin, error: adminError }, { data: enrollment, error: enrollmentError }] =
-    await Promise.all([
-      supabase.rpc("is_founding_driver_admin"),
-      supabase
-        .from("founding_driver_enrollments")
-        .select("status")
-        .eq("user_id", userId)
-        .maybeSingle(),
-    ]);
+  const [
+    { data: isAdmin, error: adminError },
+    { data: isModerator, error: moderatorError },
+    { data: enrollment, error: enrollmentError },
+  ] = await Promise.all([
+    supabase.rpc("is_founding_driver_admin"),
+    supabase.rpc("is_moderation_admin"),
+    supabase
+      .from("founding_driver_enrollments")
+      .select("status")
+      .eq("user_id", userId)
+      .maybeSingle(),
+  ]);
 
-  if (adminError || enrollmentError) {
+  if (adminError || moderatorError || enrollmentError) {
     return null;
   }
   if (isAdmin === true) {
     return { destination: "/founding-drivers/admin" as const };
+  }
+  if (isModerator === true) {
+    return { destination: "/founding-drivers/admin/moderation" as const };
   }
   if (
     enrollment &&
@@ -90,9 +97,7 @@ export const getFoundingDriverAdminContext = cache(async () => {
     return null;
   }
 
-  const { data: isAdmin, error: adminError } = await supabase.rpc(
-    "is_founding_driver_admin",
-  );
+  const { data: isAdmin, error: adminError } = await supabase.rpc("is_founding_driver_admin");
 
   if (adminError || isAdmin !== true) {
     return null;

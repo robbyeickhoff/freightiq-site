@@ -12,6 +12,7 @@ const productLinks = [
 const supportLinks = [
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },
+  { href: "/community-guidelines", label: "Community Guidelines" },
   { href: "/delete-account", label: "Delete Account" },
 ];
 

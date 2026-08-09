@@ -37,23 +37,31 @@ export async function signIn(
     return { message: "The email or password was not accepted." };
   }
 
-  const [{ data: isAdmin, error: adminError }, { data: enrollment, error: enrollmentError }] =
-    await Promise.all([
-      supabase.rpc("is_founding_driver_admin"),
-      supabase
-        .from("founding_driver_enrollments")
-        .select("status")
-        .eq("user_id", userId)
-        .maybeSingle(),
-    ]);
+  const [
+    { data: isAdmin, error: adminError },
+    { data: isModerator, error: moderatorError },
+    { data: enrollment, error: enrollmentError },
+  ] = await Promise.all([
+    supabase.rpc("is_founding_driver_admin"),
+    supabase.rpc("is_moderation_admin"),
+    supabase
+      .from("founding_driver_enrollments")
+      .select("status")
+      .eq("user_id", userId)
+      .maybeSingle(),
+  ]);
 
-  if (adminError || enrollmentError) {
+  if (adminError || moderatorError || enrollmentError) {
     await supabase.auth.signOut();
     return { message: "Founding Driver access could not be verified. Please try again." };
   }
 
   if (isAdmin) {
     redirect("/founding-drivers/admin");
+  }
+
+  if (isModerator) {
+    redirect("/founding-drivers/admin/moderation");
   }
 
   if (

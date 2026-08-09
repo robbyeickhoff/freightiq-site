@@ -4,14 +4,14 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Delete Your FreightIQ Account",
   description:
-    "Learn how to request deletion of your FreightIQ account and associated personal data.",
+    "Learn how to permanently delete your FreightIQ account and associated personal data in the app.",
   alternates: {
     canonical: "/delete-account",
   },
   openGraph: {
     title: "Delete Your FreightIQ Account | FreightIQ",
     description:
-      "Learn how to request deletion of your FreightIQ account and associated personal data.",
+      "Learn how to permanently delete your FreightIQ account and associated personal data in the app.",
     url: "/delete-account",
     images: [
       {
@@ -24,17 +24,16 @@ export const metadata: Metadata = {
 
 const deletionSteps = [
   {
-    title: "Use your account email",
-    description:
-      "Send the request from the email address associated with your FreightIQ account.",
+    title: "Open Settings",
+    description: "Sign in to FreightIQ, open Profile, and choose Settings.",
   },
   {
-    title: "Use the deletion subject line",
-    description: "Use the subject: “Delete My FreightIQ Account.”",
+    title: "Choose Delete Account",
+    description: "Delete Account appears separately beneath Log Out in the Account section.",
   },
   {
-    title: "Send the request",
-    description: "Email the request to hello@freightiqapp.com.",
+    title: "Confirm permanent deletion",
+    description: "Review what is removed, continue, type DELETE, and confirm the final action.",
   },
 ];
 
@@ -60,8 +59,8 @@ export default function DeleteAccountPage() {
               <span className="sunrise-text block">FreightIQ account.</span>
             </h1>
             <p className="mt-7 max-w-lg text-lg leading-8 text-stone-300">
-              You can request deletion of your FreightIQ account and associated personal data using
-              the steps below.
+              You can permanently delete your FreightIQ account and associated personal data
+              directly inside the app using the steps below.
             </p>
             <div className="mt-7 flex items-start gap-3 border-l-2 border-orange-500 pl-4">
               <svg
@@ -80,7 +79,7 @@ export default function DeleteAccountPage() {
                 <path d="m9.5 12 1.7 1.7 3.6-4" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               <p className="text-sm leading-6 text-stone-400">
-                You do not need access to the FreightIQ app to submit a deletion request.
+                Account deletion does not require an email, phone call, or customer-support request.
               </p>
             </div>
           </div>
@@ -92,10 +91,10 @@ export default function DeleteAccountPage() {
             />
             <div className="border-b border-stone-300/80 px-6 py-6 sm:px-8">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-orange-800">
-                Deletion request
+                In-app deletion
               </p>
               <h2 className="mt-2 text-2xl font-semibold tracking-[-0.035em] sm:text-3xl">
-                How to request deletion
+                How to delete your account
               </h2>
             </div>
 
@@ -117,16 +116,16 @@ export default function DeleteAccountPage() {
                 ))}
               </ol>
 
-              <a
-                href="mailto:hello@freightiqapp.com?subject=Delete%20My%20FreightIQ%20Account"
+              <Link
+                href="/contact"
                 className="sunrise-button mt-8 flex min-h-13 w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-base font-semibold text-[#120b06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
               >
-                Request Account Deletion
-              </a>
+                Get Account Access Help
+              </Link>
 
               <p className="mt-4 text-center text-xs leading-5 text-stone-500">
-                This opens a pre-addressed email to hello@freightiqapp.com. Nothing is sent
-                automatically.
+                Support can help with account access or app problems. Ordinary account deletion is
+                completed directly in FreightIQ Settings.
               </p>
             </div>
           </div>
@@ -150,9 +149,10 @@ export default function DeleteAccountPage() {
             </span>
             <h2 className="mt-5 text-xl font-semibold text-white">What will be deleted</h2>
             <p className="mt-3 text-sm leading-7 text-stone-300">
-              After the request is confirmed, FreightIQ will delete your account and personal data
-              associated with it, except information that must be retained for legitimate legal,
-              security, fraud-prevention, or regulatory reasons.
+              After the final in-app confirmation, FreightIQ deletes your account, profile, reports,
+              votes, contacts, notes, program records, referrals, private images, and contributor
+              attribution, except information that must be retained for legitimate legal, security,
+              fraud-prevention, or regulatory reasons.
             </p>
             <p className="mt-3 text-sm leading-7 text-stone-400">
               Any information FreightIQ is required to retain will be handled according to the{" "}
@@ -185,18 +185,19 @@ export default function DeleteAccountPage() {
                 />
               </svg>
             </span>
-            <h2 className="mt-5 text-xl font-semibold text-white">What happens next</h2>
+            <h2 className="mt-5 text-xl font-semibold text-white">Neutral stop facts</h2>
             <p className="mt-3 text-sm leading-7 text-stone-300">
-              Deletion requests are reviewed manually. FreightIQ may contact you at your account
-              email if additional information is needed to confirm the request.
+              A business name, address, coordinates, and Delivery Zone may remain only after they
+              are disconnected from your account. Your authored notes, contacts, private images, and
+              attribution are removed.
             </p>
             <p className="mt-3 text-sm leading-7 text-stone-400">
-              You will receive an email confirmation when the deletion request has been completed.
+              Successful deletion signs the device out. The deleted account cannot be recovered.
             </p>
           </section>
         </div>
 
-        <p className="mt-8 text-center text-xs text-stone-500">Last updated: July 2026</p>
+        <p className="mt-8 text-center text-xs text-stone-500">Last updated: August 2026</p>
       </section>
     </main>
   );

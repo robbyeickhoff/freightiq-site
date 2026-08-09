@@ -10,6 +10,7 @@ const publicRoutes = [
   "/early-access",
   "/contact",
   "/privacy",
+  "/community-guidelines",
   "/delete-account",
 ];
 

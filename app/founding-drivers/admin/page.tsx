@@ -141,9 +141,7 @@ function ContributionCard({
           </div>
           <p className="mt-1 text-sm text-stone-400">
             {profile?.username ?? "Unknown driver"} ·{" "}
-            {contribution.contribution_type === "new_stop"
-              ? "New stop"
-              : "Completed existing stop"}
+            {contribution.contribution_type === "new_stop" ? "New stop" : "Completed existing stop"}
           </p>
           <p className="mt-1 text-xs text-stone-500">
             {stop?.address ?? contribution.stop_id} · Submitted{" "}
@@ -152,7 +150,10 @@ function ContributionCard({
         </div>
         <div className="flex flex-wrap gap-2">
           {contribution.completed_fields.map((field) => (
-            <span key={field} className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-stone-300">
+            <span
+              key={field}
+              className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-stone-300"
+            >
               {fieldLabel(field)}
             </span>
           ))}
@@ -221,7 +222,9 @@ function DriverCard({
       <div className="flex flex-col justify-between gap-4 border-b border-white/10 pb-5 sm:flex-row sm:items-start">
         <div>
           <div className="flex flex-wrap items-center gap-3">
-            <h3 className="text-xl font-semibold text-white">{profile?.username ?? "Unknown driver"}</h3>
+            <h3 className="text-xl font-semibold text-white">
+              {profile?.username ?? "Unknown driver"}
+            </h3>
             <StatusBadge status={enrollment.status} />
             {enrollment.permanent_founding_driver ? (
               <span className="rounded-full bg-gradient-to-r from-orange-700 to-amber-500 px-2.5 py-1 text-xs font-bold text-[#160b05]">
@@ -254,7 +257,13 @@ function DriverCard({
         <Metric label="Pending review" value={String(pendingReviews)} />
         <Metric
           label="Eligibility"
-          value={progress?.bonus_reward_eligible ? "$40" : progress?.base_reward_eligible ? "$25" : "Not yet"}
+          value={
+            progress?.bonus_reward_eligible
+              ? "$40"
+              : progress?.base_reward_eligible
+                ? "$25"
+                : "Not yet"
+          }
           detail={progress?.bonus_reward_eligible ? "Maximum reward" : "Live calculation"}
         />
       </div>
@@ -262,7 +271,10 @@ function DriverCard({
       <div className="mt-5 grid gap-4 xl:grid-cols-2">
         <section className="rounded-2xl border border-white/10 bg-black/15 p-4">
           <h4 className="text-sm font-semibold text-white">Program controls</h4>
-          <form action={extendProgram} className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end">
+          <form
+            action={extendProgram}
+            className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end"
+          >
             <input type="hidden" name="enrollment_id" value={enrollment.id} />
             <label className="grid flex-1 gap-1 text-xs font-semibold text-stone-400">
               Program end date
@@ -279,7 +291,10 @@ function DriverCard({
               Update date
             </button>
           </form>
-          <form action={updateProgramStatus} className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end">
+          <form
+            action={updateProgramStatus}
+            className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-end"
+          >
             <input type="hidden" name="enrollment_id" value={enrollment.id} />
             <label className="grid flex-1 gap-1 text-xs font-semibold text-stone-400">
               Program status
@@ -358,9 +373,7 @@ function DriverCard({
               />
             </label>
             <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-              <p className="text-xs text-stone-500">
-                Paid {formatDate(enrollment.paid_at, true)}
-              </p>
+              <p className="text-xs text-stone-500">Paid {formatDate(enrollment.paid_at, true)}</p>
               <button className="min-h-11 rounded-full border border-amber-400/35 bg-amber-400/10 px-5 text-sm font-semibold text-amber-200 hover:bg-amber-400/15">
                 Save reward details
               </button>
@@ -425,9 +438,22 @@ export default async function FoundingDriverAdminPage({
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/founding-drivers/admin/referrals" className="sunrise-button inline-flex min-h-11 items-center rounded-full px-5 text-sm font-semibold text-[#120b06]">Referral Program</Link>
+              <Link
+                href="/founding-drivers/admin/moderation"
+                className="inline-flex min-h-11 items-center rounded-full border border-white/15 px-5 text-sm font-semibold text-stone-300 hover:border-white/30 hover:text-white"
+              >
+                Content Moderation
+              </Link>
+              <Link
+                href="/founding-drivers/admin/referrals"
+                className="sunrise-button inline-flex min-h-11 items-center rounded-full px-5 text-sm font-semibold text-[#120b06]"
+              >
+                Referral Program
+              </Link>
               <form action={signOut}>
-                <button className="min-h-11 rounded-full border border-white/15 px-5 text-sm font-semibold text-stone-300 hover:border-white/30 hover:text-white">Sign out</button>
+                <button className="min-h-11 rounded-full border border-white/15 px-5 text-sm font-semibold text-stone-300 hover:border-white/30 hover:text-white">
+                  Sign out
+                </button>
               </form>
             </div>
           </div>
@@ -436,12 +462,18 @@ export default async function FoundingDriverAdminPage({
 
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8">
         {notice ? (
-          <p className="rounded-2xl border border-emerald-400/25 bg-emerald-400/10 px-5 py-4 text-sm text-emerald-100" role="status">
+          <p
+            className="rounded-2xl border border-emerald-400/25 bg-emerald-400/10 px-5 py-4 text-sm text-emerald-100"
+            role="status"
+          >
             {notice}
           </p>
         ) : null}
         {error ? (
-          <p className="rounded-2xl border border-rose-400/25 bg-rose-400/10 px-5 py-4 text-sm text-rose-100" role="alert">
+          <p
+            className="rounded-2xl border border-rose-400/25 bg-rose-400/10 px-5 py-4 text-sm text-rose-100"
+            role="alert"
+          >
             {error}
           </p>
         ) : null}
@@ -464,7 +496,10 @@ export default async function FoundingDriverAdminPage({
           </div>
         </section>
 
-        <section className="rounded-[1.75rem] border border-white/10 bg-[#111518] p-5 sm:p-6" aria-labelledby="enroll-heading">
+        <section
+          className="rounded-[1.75rem] border border-white/10 bg-[#111518] p-5 sm:p-6"
+          aria-labelledby="enroll-heading"
+        >
           <div className="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
             <div>
               <p className="eyebrow">After onboarding</p>
@@ -476,7 +511,10 @@ export default async function FoundingDriverAdminPage({
                 program window in America/Denver.
               </p>
             </div>
-            <form action={enrollDriver} className="grid gap-3 sm:grid-cols-[1fr_12rem_auto] sm:items-end">
+            <form
+              action={enrollDriver}
+              className="grid gap-3 sm:grid-cols-[1fr_12rem_auto] sm:items-end"
+            >
               <label className="grid gap-1 text-xs font-semibold text-stone-400">
                 FreightIQ username
                 <select
@@ -533,7 +571,8 @@ export default async function FoundingDriverAdminPage({
               Contribution review
             </h2>
             <p className="mt-2 text-sm text-stone-400">
-              Open items appear first. Corrected clarification items return to Pending automatically.
+              Open items appear first. Corrected clarification items return to Pending
+              automatically.
             </p>
           </div>
           <div className="mt-5 grid gap-4">
@@ -576,7 +615,8 @@ export default async function FoundingDriverAdminPage({
               <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.025] px-5 py-12 text-center">
                 <p className="font-semibold text-stone-300">No drivers are enrolled yet.</p>
                 <p className="mt-2 text-sm text-stone-500">
-                  Driver #1 will appear here after the onboarding walkthrough and explicit enrollment.
+                  Driver #1 will appear here after the onboarding walkthrough and explicit
+                  enrollment.
                 </p>
               </div>
             )}
