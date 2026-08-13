@@ -132,7 +132,29 @@ function ContributionCard({
   stop?: StopSummary;
 }) {
   return (
-    <article className="rounded-2xl border border-white/10 bg-[#171c20] p-5">
+    <details className="group rounded-2xl border border-white/10 bg-[#171c20]">
+      <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 marker:content-none">
+        <div>
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="font-semibold text-white">{stop?.name ?? "Unknown stop"}</h3>
+            <StatusBadge status={contribution.review_status} />
+          </div>
+          <p className="mt-1 text-sm text-stone-400">
+            {profile?.username ?? "Unknown driver"} ·{" "}
+            {contribution.contribution_type === "new_stop" ? "New stop" : "Completed existing stop"}
+          </p>
+          <p className="mt-1 text-xs text-stone-500">
+            Submitted {formatDate(contribution.submitted_at, true)}
+          </p>
+        </div>
+        <span
+          aria-hidden="true"
+          className="mt-1 text-lg text-stone-500 transition-transform group-open:rotate-180"
+        >
+          ⌄
+        </span>
+      </summary>
+      <div className="border-t border-white/10 p-5">
       <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
         <div>
           <div className="flex flex-wrap items-center gap-2">
@@ -200,7 +222,8 @@ function ContributionCard({
           Save review
         </button>
       </form>
-    </article>
+      </div>
+    </details>
   );
 }
 
@@ -407,11 +430,10 @@ export default async function FoundingDriverAdminPage({
   const unresolvedReviews = data.contributions.filter((item) =>
     ["pending", "needs_clarification"].includes(item.review_status),
   );
-  const orderedContributions = [...data.contributions].sort((a, b) => {
-    const aOpen = ["pending", "needs_clarification"].includes(a.review_status) ? 0 : 1;
-    const bOpen = ["pending", "needs_clarification"].includes(b.review_status) ? 0 : 1;
-    return aOpen - bOpen || a.submitted_at.localeCompare(b.submitted_at);
-  });
+  const reviewedContributions = data.contributions
+    .filter((item) => !["pending", "needs_clarification"].includes(item.review_status))
+    .sort((a, b) => b.submitted_at.localeCompare(a.submitted_at));
+  unresolvedReviews.sort((a, b) => a.submitted_at.localeCompare(b.submitted_at));
   const activeDrivers = data.enrollments.filter((item) => item.status === "active").length;
   const eligibleDrivers = data.progress.filter((item) => item.base_reward_eligible).length;
   const pendingReviewsByEnrollment = new Map<string, number>();
@@ -576,8 +598,8 @@ export default async function FoundingDriverAdminPage({
             </p>
           </div>
           <div className="mt-5 grid gap-4">
-            {orderedContributions.length ? (
-              orderedContributions.map((contribution) => (
+            {unresolvedReviews.length ? (
+              unresolvedReviews.map((contribution) => (
                 <ContributionCard
                   key={contribution.id}
                   contribution={contribution}
@@ -588,6 +610,34 @@ export default async function FoundingDriverAdminPage({
             ) : (
               <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.025] px-5 py-10 text-center text-sm text-stone-500">
                 No Founding Driver contributions are waiting for review.
+              </div>
+            )}
+          </div>
+        </section>
+
+        <section aria-labelledby="reviewed-heading">
+          <div>
+            <p className="eyebrow">Completed decisions</p>
+            <h2 id="reviewed-heading" className="mt-2 text-2xl font-semibold tracking-[-0.03em]">
+              Reviewed contributions
+            </h2>
+            <p className="mt-2 text-sm text-stone-400">
+              Completed reviews stay collapsed here for quick reference.
+            </p>
+          </div>
+          <div className="mt-5 grid gap-4">
+            {reviewedContributions.length ? (
+              reviewedContributions.map((contribution) => (
+                <ContributionCard
+                  key={contribution.id}
+                  contribution={contribution}
+                  profile={profileById.get(contribution.user_id)}
+                  stop={stopById.get(contribution.stop_id)}
+                />
+              ))
+            ) : (
+              <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.025] px-5 py-10 text-center text-sm text-stone-500">
+                No contributions have been reviewed yet.
               </div>
             )}
           </div>
