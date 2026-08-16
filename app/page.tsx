@@ -154,8 +154,8 @@ export default function FreightIQLandingPage() {
             </h2>
           </div>
           <p className="max-w-xl text-base leading-8 text-stone-400 lg:pb-1">
-            Drivers regularly arrive at the correct street address without knowing which entrance
-            to use, whether the truck will fit, where to back in, or where receiving is actually
+            Drivers regularly arrive at the correct street address without knowing which entrance to
+            use, whether the truck will fit, where to back in, or where receiving is actually
             located. That knowledge usually lives only in the experience of the drivers who have
             already made the delivery.
           </p>
@@ -183,6 +183,12 @@ export default function FreightIQLandingPage() {
             >
               View a Real Example <span aria-hidden="true">→</span>
             </Link>
+            <Link
+              href="/why"
+              className="ml-6 mt-8 inline-flex items-center gap-2 rounded-md text-sm font-semibold text-stone-700 transition-colors hover:text-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+            >
+              Why I Built FreightIQ <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
           <div className="rounded-[2rem] border border-stone-300/80 bg-[#e8e3db] p-4 shadow-[0_28px_80px_rgba(54,42,30,0.12)] sm:p-5">
@@ -192,7 +198,9 @@ export default function FreightIQLandingPage() {
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-orange-400">
                     Operational Essentials
                   </p>
-                  <p className="mt-2 text-xl font-semibold">Know the essentials before you arrive.</p>
+                  <p className="mt-2 text-xl font-semibold">
+                    Know the essentials before you arrive.
+                  </p>
                 </div>
                 <span className="hidden font-mono text-xs text-stone-600 sm:block">01—04</span>
               </div>
@@ -243,9 +251,7 @@ export default function FreightIQLandingPage() {
                   </span>
                   <div>
                     <h3 className="text-base font-semibold">{pillar.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-stone-400">
-                      {pillar.description}
-                    </p>
+                    <p className="mt-2 text-sm leading-6 text-stone-400">{pillar.description}</p>
                   </div>
                 </div>
               </article>

@@ -6,6 +6,8 @@ const publicRoutes = [
   "",
   "/demo",
   "/real-example",
+  "/why",
+  "/faq",
   "/founding-drivers-program",
   "/early-access",
   "/contact",

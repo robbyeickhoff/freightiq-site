@@ -5,11 +5,13 @@ const productLinks = [
   { href: "/demo", label: "How It Works" },
   { href: "/real-example", label: "Real Example" },
   { href: "/founding-drivers-program", label: "Founding Drivers" },
+  { href: "/why", label: "Why FreightIQ" },
   { href: "/#about", label: "About" },
   { href: "/early-access", label: "Request Early Access" },
 ];
 
 const supportLinks = [
+  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/community-guidelines", label: "Community Guidelines" },
