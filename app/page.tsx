@@ -128,7 +128,7 @@ export default function FreightIQLandingPage() {
                 Request Early Access
               </Link>
               <Link
-                href="/demo"
+                href="#demo"
                 className="inline-flex min-h-13 items-center justify-center rounded-full border border-white/20 bg-black/20 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
               >
                 See How It Works
@@ -159,6 +159,48 @@ export default function FreightIQLandingPage() {
             located. That knowledge usually lives only in the experience of the drivers who have
             already made the delivery.
           </p>
+        </div>
+      </section>
+
+      <section id="demo" className="relative scroll-mt-6 border-b border-white/10 bg-[#080b0d]">
+        <div className="absolute inset-0 sunrise-grid opacity-20" aria-hidden="true" />
+        <div
+          className="absolute left-[64%] top-[16%] h-80 w-80 rounded-full bg-orange-500/10 blur-3xl"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_0.72fr] lg:items-center lg:py-28">
+          <div>
+            <p className="eyebrow">See FreightIQ in action</p>
+            <h2 className="mt-5 max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.045em] text-balance sm:text-5xl">
+              Real stop intelligence, available before the driver arrives.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-400">
+              Search a commercial stop, review practical details from other drivers, and confirm
+              the actual delivery location with a saved Delivery Zone.
+            </p>
+            <Link
+              href="/demo"
+              className="mt-8 inline-flex items-center gap-2 rounded-md text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-400"
+            >
+              Explore how FreightIQ works <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          <div className="mx-auto w-full max-w-[25rem] lg:justify-self-end">
+            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#111518] p-2 shadow-[0_28px_90px_rgba(0,0,0,0.42)]">
+              <div className="aspect-[9/16] overflow-hidden rounded-[1.55rem] bg-black">
+                <iframe
+                  className="h-full w-full"
+                  src="https://www.youtube-nocookie.com/embed/0Yd5yhLpkfw"
+                  title="FreightIQ demo — real driver intel before you arrive"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
