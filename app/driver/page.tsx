@@ -77,7 +77,18 @@ export default function DriverPage() {
               FreightIQ helps delivery drivers understand where the delivery actually happens,
               whether the truck will fit, and what to expect before entering the stop.
             </p>
-            <div className="mx-auto mt-9 max-w-xl">
+            <div className="mt-9">
+              <Link
+                href="/early-access"
+                className="sunrise-button inline-flex min-h-13 items-center justify-center rounded-full px-8 py-3.5 text-base font-semibold text-[#120b06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300"
+              >
+                Request Early Access
+              </Link>
+            </div>
+            <div className="mx-auto mt-8 max-w-xl border-t border-white/10 pt-6">
+              <p className="mb-3 text-sm font-semibold text-stone-300">
+                Know another driver who should see FreightIQ?
+              </p>
               <DriverShareActions />
             </div>
             <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-stone-500">
