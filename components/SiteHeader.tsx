@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const navigation = [
+  { href: "/demos", label: "Demos" },
   { href: "/demo", label: "How It Works" },
   { href: "/real-example", label: "Real Example" },
   { href: "/founding-drivers-program", label: "Founding Drivers" },

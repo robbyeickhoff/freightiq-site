@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const productLinks = [
+  { href: "/demos", label: "Demo Videos" },
   { href: "/demo", label: "How It Works" },
   { href: "/real-example", label: "Real Example" },
   { href: "/founding-drivers-program", label: "Founding Drivers" },
