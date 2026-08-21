@@ -53,6 +53,8 @@ const demos = [
       "See how reusable stop knowledge can help new drivers understand unfamiliar deliveries without starting from zero.",
     videoId: "RT83Pl9qOaA",
     iframeTitle: "FreightIQ demo — help new delivery drivers get up to speed faster",
+    resourceHref: "/resources/get-new-delivery-drivers-up-to-speed-faster",
+    resourceLabel: "Read the supervisor guide",
   },
   {
     number: "04",
@@ -124,6 +126,14 @@ export default function DemosPage() {
                 <p className="mt-4 min-h-21 text-sm leading-7 text-stone-400">
                   {demo.description}
                 </p>
+                {"resourceHref" in demo && demo.resourceHref ? (
+                  <Link
+                    href={demo.resourceHref}
+                    className="mt-4 inline-flex w-fit items-center rounded-md text-sm font-semibold text-orange-300 transition-colors hover:text-orange-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+                  >
+                    {demo.resourceLabel} <span className="ml-2" aria-hidden="true">→</span>
+                  </Link>
+                ) : null}
                 <div className="mx-auto mt-7 w-full max-w-[19rem] overflow-hidden rounded-[1.8rem] border border-white/10 bg-black p-2">
                   <div className="aspect-[9/16] overflow-hidden rounded-[1.4rem] bg-black">
                     <iframe

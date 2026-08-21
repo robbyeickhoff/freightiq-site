@@ -5,6 +5,8 @@ const siteUrl = "https://freightiqapp.com";
 const publicRoutes = [
   "",
   "/demos",
+  "/resources",
+  "/resources/get-new-delivery-drivers-up-to-speed-faster",
   "/demo",
   "/driver",
   "/real-example",
