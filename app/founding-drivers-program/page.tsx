@@ -63,6 +63,41 @@ export default function FoundingDriversProgramPage() {
         </div>
       </section>
 
+      <section className="border-b border-white/10 bg-[#0d1114]">
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1fr_0.72fr] lg:items-center lg:py-24">
+          <div className="max-w-2xl">
+            <p className="eyebrow">See the program in action</p>
+            <h2 className="mt-5 text-3xl font-semibold tracking-[-0.045em] sm:text-5xl">
+              Build better stop intel. Earn meaningful rewards.
+            </h2>
+            <p className="mt-6 text-base leading-8 text-stone-300">
+              Founding Drivers turn what they learn on real delivery days into practical knowledge
+              for the next driver. Watch the short overview to see how useful contributions and
+              consistent participation move the program forward.
+            </p>
+            <a
+              href="#request-to-join"
+              className="mt-8 inline-flex rounded-md font-semibold text-amber-200 underline decoration-amber-300/35 underline-offset-4 transition hover:text-amber-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300"
+            >
+              Request to Join
+            </a>
+          </div>
+          <div className="mx-auto w-full max-w-[21rem] overflow-hidden rounded-[2rem] border border-white/10 bg-black p-2 shadow-[0_28px_90px_rgba(0,0,0,0.38)]">
+            <div className="aspect-[9/16] overflow-hidden rounded-[1.55rem] bg-black">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube-nocookie.com/embed/N80FrPgDa58"
+                title="FreightIQ Founding Drivers Program — build better stop intel and earn rewards"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div>

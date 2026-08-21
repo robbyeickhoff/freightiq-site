@@ -54,6 +54,15 @@ const demos = [
     videoId: "RT83Pl9qOaA",
     iframeTitle: "FreightIQ demo — help new delivery drivers get up to speed faster",
   },
+  {
+    number: "04",
+    audience: "For Founding Drivers",
+    title: "Build better stop intel together.",
+    description:
+      "See how Founding Drivers turn real delivery experience into useful stop knowledge while working toward meaningful program rewards.",
+    videoId: "N80FrPgDa58",
+    iframeTitle: "FreightIQ Founding Drivers Program — build better stop intel and earn rewards",
+  },
 ];
 
 export default function DemosPage() {
@@ -95,7 +104,7 @@ export default function DemosPage() {
       <section className="relative bg-[#0d1114]">
         <div className="absolute inset-0 sunrise-grid opacity-15" aria-hidden="true" />
         <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
-          <div className="grid gap-8 xl:grid-cols-3">
+          <div className="grid gap-8 lg:grid-cols-2">
             {demos.map((demo) => (
               <article
                 key={demo.videoId}
