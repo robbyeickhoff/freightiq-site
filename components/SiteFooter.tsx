@@ -19,6 +19,38 @@ const supportLinks = [
   { href: "/delete-account", label: "Delete Account" },
 ];
 
+const socialLinks = [
+  {
+    href: "https://www.facebook.com/profile.php?id=61593729710264",
+    label: "FreightIQ on Facebook",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="currentColor">
+        <path d="M13.5 21v-8h2.75l.41-3H13.5V8.09c0-.87.24-1.46 1.58-1.46h1.69V3.95a22.6 22.6 0 0 0-2.46-.13c-2.43 0-4.1 1.49-4.1 4.22V10H7.46v3h2.75v8h3.29Z" />
+      </svg>
+    ),
+  },
+  {
+    href: "https://www.instagram.com/freightiqapp/",
+    label: "FreightIQ on Instagram",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="none">
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="2" />
+        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2" />
+        <circle cx="17.4" cy="6.6" r="1" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    href: "https://x.com/FreightIQapp",
+    label: "FreightIQ on X",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5" fill="currentColor">
+        <path d="M18.9 3H22l-6.77 7.74L23.2 21h-6.24l-4.89-6.39L6.48 21H3.36l7.26-8.3L3 3h6.4l4.42 5.84L18.9 3Zm-1.1 16h1.72L8.47 4.9H6.63L17.8 19Z" />
+      </svg>
+    ),
+  },
+];
+
 export default function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-[#07090b] text-white">
@@ -45,6 +77,20 @@ export default function SiteFooter() {
             <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-amber-400">
               Confidence Delivered.
             </p>
+            <div className="mt-6 flex items-center gap-3" aria-label="FreightIQ social media">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={item.label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-stone-300 transition-colors hover:border-amber-400/60 hover:bg-amber-400/10 hover:text-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           <div>
