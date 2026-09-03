@@ -100,6 +100,10 @@ export function FoundingDriverRequestForm() {
           Thanks for stepping forward.
         </h2>
         <p className="mt-5 text-base leading-7 text-stone-700">
+          You only need to submit this form once. No separate Early Access request is needed.
+          We’ll contact you with next steps.
+        </p>
+        <p className="mt-4 text-base leading-7 text-stone-700">
           Founding Driver requests are reviewed personally. Requesting to join does not create an
           account, enroll you, or start the 30-day program window.
         </p>
@@ -243,6 +247,11 @@ export function FoundingDriverRequestForm() {
             placeholder="Tell us what kind of stops you run and why practical delivery intel matters to you."
           />
         </div>
+
+        <p className="text-sm leading-6 text-stone-600">
+          You only need to submit this form once. No separate Early Access request is needed.
+          We’ll contact you with next steps.
+        </p>
 
         <p className="text-sm leading-6 text-stone-600">
           Requests are reviewed manually. Submitting this form does not guarantee selection,
