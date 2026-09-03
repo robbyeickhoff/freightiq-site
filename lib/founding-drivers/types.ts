@@ -11,7 +11,7 @@ export type ReviewStatus =
   | "needs_clarification"
   | "does_not_count";
 
-export type PaymentPreference = "venmo" | "amazon_gift_card" | "other";
+export type PaymentPreference = "venmo" | "paypal" | "cash_app" | "amazon_gift_card" | "other";
 export type PaymentStatus = "not_earned" | "earned" | "paid";
 
 export type Profile = {

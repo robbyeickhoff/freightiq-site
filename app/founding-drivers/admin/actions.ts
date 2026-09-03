@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 import { requireFoundingDriverAdmin } from "@/lib/founding-drivers/auth";
 import type {
   EnrollmentStatus,
-  PaymentPreference,
   PaymentStatus,
   ReviewStatus,
 } from "@/lib/founding-drivers/types";
@@ -29,7 +28,6 @@ const reviewStatuses: ReviewStatus[] = [
   "needs_clarification",
   "does_not_count",
 ];
-const paymentPreferences: PaymentPreference[] = ["venmo", "amazon_gift_card", "other"];
 const paymentStatuses: PaymentStatus[] = ["not_earned", "earned", "paid"];
 
 function value(formData: FormData, name: string) {
@@ -269,20 +267,13 @@ export async function confirmQualification(formData: FormData) {
 export async function updateReward(formData: FormData) {
   const { supabase } = await requireFoundingDriverAdmin();
   const enrollmentId = value(formData, "enrollment_id");
-  const preferenceValue = value(formData, "payment_preference");
-  const preference = preferenceValue ? (preferenceValue as PaymentPreference) : null;
-  const preferenceNote = value(formData, "payment_preference_note");
   const paymentStatus = value(formData, "payment_status") as PaymentStatus;
 
   if (
     !validUuid(enrollmentId) ||
-    (preference !== null && !paymentPreferences.includes(preference)) ||
     !paymentStatuses.includes(paymentStatus)
   ) {
     finish("Choose valid reward details.", "error");
-  }
-  if (preferenceNote.length > 200) {
-    finish("Payment notes must be 200 characters or fewer.", "error");
   }
 
   const [{ data: progress, error: progressError }, { data: enrollment, error: enrollmentError }] =
@@ -294,7 +285,7 @@ export async function updateReward(formData: FormData) {
         .maybeSingle(),
       supabase
         .from("founding_driver_enrollments")
-        .select("status, end_date, permanent_founding_driver")
+        .select("status, end_date, permanent_founding_driver, payment_preference")
         .eq("id", enrollmentId)
         .maybeSingle(),
     ]);
@@ -305,8 +296,8 @@ export async function updateReward(formData: FormData) {
   if (paymentStatus !== "not_earned" && progress.earned_reward_cents <= 0) {
     finish("A reward cannot be recorded before the driver is eligible.", "error");
   }
-  if (paymentStatus === "paid" && (!preference || !enrollment.permanent_founding_driver)) {
-    finish("Confirm qualification and choose a payment method before recording payment.", "error");
+  if (paymentStatus === "paid" && (!enrollment.payment_preference || !enrollment.permanent_founding_driver)) {
+    finish("Confirm qualification and have the driver save a reward preference before recording payment.", "error");
   }
   if (
     paymentStatus === "paid" &&
@@ -320,8 +311,6 @@ export async function updateReward(formData: FormData) {
   const { data, error } = await supabase
     .from("founding_driver_enrollments")
     .update({
-      payment_preference: preference,
-      payment_preference_note: preferenceNote || null,
       payment_status: paymentStatus,
       paid_at: paymentStatus === "paid" ? new Date().toISOString() : null,
       updated_at: new Date().toISOString(),
@@ -334,5 +323,6 @@ export async function updateReward(formData: FormData) {
     finish("Reward details could not be updated.", "error");
   }
 
+  revalidatePath("/founding-drivers");
   finish("Reward details updated.");
 }

@@ -1,5 +1,6 @@
 import { requireFoundingDriver } from "./auth";
 import type {
+  Enrollment,
   DriverContribution,
   DriverProfile,
   DriverProgress,
@@ -18,7 +19,7 @@ type RawLeaderboardEntry = Omit<LeaderboardEntry, "has_profile_image">;
 export async function loadFoundingDriverDashboard() {
   const { supabase, userId } = await requireFoundingDriver();
 
-  const [profileResult, progressResult, contributionsResult, leaderboardResult] = await Promise.all([
+  const [profileResult, progressResult, contributionsResult, leaderboardResult, preferenceResult] = await Promise.all([
     supabase
       .from("profiles")
       .select("id, username, created_at, profile_image_path")
@@ -37,8 +38,12 @@ export async function loadFoundingDriverDashboard() {
       .eq("user_id", userId)
       .order("submitted_at", { ascending: false }),
     supabase.rpc("get_founding_driver_leaderboard"),
+    supabase.from("founding_driver_enrollments")
+      .select("payment_preference, payment_preference_note")
+      .eq("user_id", userId).single(),
   ]);
 
+  assertQuerySucceeded(preferenceResult.error, "your reward preference");
   assertQuerySucceeded(profileResult.error, "your FreightIQ profile");
   assertQuerySucceeded(progressResult.error, "your Founding Driver progress");
   assertQuerySucceeded(contributionsResult.error, "your contribution reviews");
@@ -75,6 +80,7 @@ export async function loadFoundingDriverDashboard() {
   );
 
   return {
+    rewardPreference: preferenceResult.data as Pick<Enrollment, "payment_preference" | "payment_preference_note">,
     profile: profileResult.data as DriverProfile,
     progress: progressResult.data as DriverProgress,
     contributions,

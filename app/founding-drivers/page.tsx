@@ -9,6 +9,7 @@ import type {
   LeaderboardEntry,
   StopSummary,
 } from "@/lib/founding-drivers/types";
+import RewardPreferenceForm from "./RewardPreferenceForm";
 import ProfileImageForm from "./ProfileImageForm";
 import { signOut } from "./actions";
 
@@ -335,6 +336,8 @@ export default async function FoundingDriversPage() {
             ) : null}
           </div>
         </section>
+
+        <RewardPreferenceForm method={data.rewardPreference.payment_preference} details={data.rewardPreference.payment_preference_note} />
 
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
           <section aria-labelledby="reviews-heading">

@@ -188,19 +188,12 @@ function DriverCard({
           <form action={updateReward} className="mt-4 grid gap-3">
             <input type="hidden" name="enrollment_id" value={enrollment.id} />
             <div className="grid gap-3 sm:grid-cols-2">
-              <label className="grid gap-1 text-xs font-semibold text-stone-400">
-                Payment method
-                <select
-                  name="payment_preference"
-                  defaultValue={enrollment.payment_preference ?? ""}
-                  className="min-h-11 rounded-xl border border-white/15 bg-[#0e1215] px-3 text-sm text-white"
-                >
-                  <option value="">Not chosen</option>
-                  <option value="venmo">Venmo</option>
-                  <option value="amazon_gift_card">Amazon gift card</option>
-                  <option value="other">Other</option>
-                </select>
-              </label>
+              <div className="grid content-start gap-2 text-sm">
+                <p className="text-xs font-semibold text-stone-400">Driver’s reward preference</p>
+                <p className="text-white">{enrollment.payment_preference ? <StatusBadge status={enrollment.payment_preference} /> : "Not chosen yet"}</p>
+                {enrollment.payment_preference_note ? <p className="break-all text-stone-300">{enrollment.payment_preference_note}</p> : null}
+                <p className="text-xs text-stone-500">The driver can update this on their Founding Drivers page.</p>
+              </div>
               <label className="grid gap-1 text-xs font-semibold text-stone-400">
                 Payment status
                 <select
@@ -214,16 +207,6 @@ function DriverCard({
                 </select>
               </label>
             </div>
-            <label className="grid gap-1 text-xs font-semibold text-stone-400">
-              Payment note
-              <input
-                name="payment_preference_note"
-                defaultValue={enrollment.payment_preference_note ?? ""}
-                maxLength={200}
-                placeholder="Optional handle or delivery note—never credentials"
-                className="min-h-11 rounded-xl border border-white/15 bg-[#0e1215] px-3 text-sm text-white"
-              />
-            </label>
             <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
               <p className="text-xs text-stone-500">Paid {formatDate(enrollment.paid_at, true)}</p>
               <button className="min-h-11 rounded-full border border-amber-400/35 bg-amber-400/10 px-5 text-sm font-semibold text-amber-200 hover:bg-amber-400/15">

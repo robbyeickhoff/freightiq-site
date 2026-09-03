@@ -11,6 +11,8 @@ const statusLabels: Record<string, string> = {
   earned: "Earned",
   paid: "Paid",
   venmo: "Venmo",
+  paypal: "PayPal",
+  cash_app: "Cash App",
   amazon_gift_card: "Amazon gift card",
   other: "Other",
 };

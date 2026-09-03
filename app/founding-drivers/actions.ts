@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { requireFoundingDriver } from "@/lib/founding-drivers/auth";
 import { createClient } from "@/lib/supabase/server";
 
+import { rewardPreferenceError } from "@/lib/founding-drivers/reward-preferences";
+
 export type ProfileImageActionResult = {
   ok: boolean;
   message: string;
@@ -64,4 +66,26 @@ export async function removeProfileImage(): Promise<ProfileImageActionResult> {
   }
 
   return { ok: true, message: "Profile photo removed." };
+}
+
+
+export async function saveRewardPreference(
+  _previous: { ok: boolean; message: string },
+  formData: FormData,
+): Promise<{ ok: boolean; message: string }> {
+  const { supabase } = await requireFoundingDriver();
+  const methodValue = formData.get("payment_preference");
+  const detailsValue = formData.get("payment_preference_note");
+  const method = typeof methodValue === "string" ? methodValue.trim() : "";
+  const details = typeof detailsValue === "string" ? detailsValue.trim() : "";
+  const validationError = rewardPreferenceError(method, details);
+  if (validationError) return { ok: false, message: validationError };
+  const { error } = await supabase.rpc("set_founding_driver_reward_preference", {
+    p_method: method,
+    p_details: details,
+  });
+  if (error) return { ok: false, message: "Your preference could not be saved. Please try again." };
+  revalidatePath("/founding-drivers");
+  revalidatePath("/founding-drivers/admin");
+  return { ok: true, message: "Reward preference saved." };
 }
