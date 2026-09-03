@@ -35,6 +35,7 @@ export async function loadFoundingDriverAdminDashboard() {
         .select(
           "id, enrollment_id, user_id, stop_id, contribution_type, completed_fields, core_snapshot, review_status, review_note, submitted_at, reviewed_at",
         )
+        .in("review_status", ["pending", "needs_clarification"])
         .order("submitted_at", { ascending: true }),
     ]);
 
@@ -69,4 +70,51 @@ export async function loadFoundingDriverAdminDashboard() {
     stops,
     availableProfiles: profiles.filter((profile) => !enrolledUserIds.has(profile.id)),
   };
+}
+
+export const REVIEW_HISTORY_PAGE_SIZE = 10;
+
+export function parseHistoryPage(value: string | string[] | undefined): number {
+  if (typeof value !== "string" || !/^[1-9]\d*$/.test(value)) return 1;
+  const page = Number(value);
+  return Number.isSafeInteger(page) ? page : 1;
+}
+
+export async function loadFoundingDriverReviewHistory(requestedPage: number) {
+  const { supabase } = await requireFoundingDriverAdmin();
+  const statuses = ["counts", "does_not_count"];
+  const countResult = await supabase
+    .from("founding_driver_stop_contributions")
+    .select("id", { count: "exact", head: true })
+    .in("review_status", statuses);
+  assertQuerySucceeded(countResult.error, "review history count");
+  const total = countResult.count ?? 0;
+  const pageCount = Math.max(1, Math.ceil(total / REVIEW_HISTORY_PAGE_SIZE));
+  const page = Math.min(Math.max(1, requestedPage), pageCount);
+  const offset = (page - 1) * REVIEW_HISTORY_PAGE_SIZE;
+  const result = await supabase
+    .from("founding_driver_stop_contributions")
+    .select("id, enrollment_id, user_id, stop_id, contribution_type, completed_fields, core_snapshot, review_status, review_note, submitted_at, reviewed_at")
+    .in("review_status", statuses)
+    .order("reviewed_at", { ascending: false, nullsFirst: false })
+    .order("submitted_at", { ascending: false })
+    .order("id", { ascending: false })
+    .range(offset, offset + REVIEW_HISTORY_PAGE_SIZE - 1);
+  assertQuerySucceeded(result.error, "review history");
+  const contributions = (result.data ?? []) as Contribution[];
+  let profiles: Profile[] = [];
+  let stops: StopSummary[] = [];
+  if (contributions.length) {
+    const [profilesResult, stopsResult] = await Promise.all([
+      supabase.from("profiles").select("id, username, created_at")
+        .in("id", [...new Set(contributions.map((item) => item.user_id))]),
+      supabase.from("mfi_stops").select("id, name, address")
+        .in("id", [...new Set(contributions.map((item) => item.stop_id))]),
+    ]);
+    assertQuerySucceeded(profilesResult.error, "review history profiles");
+    assertQuerySucceeded(stopsResult.error, "review history stops");
+    profiles = (profilesResult.data ?? []) as Profile[];
+    stops = (stopsResult.data ?? []) as StopSummary[];
+  }
+  return { contributions, profiles, stops, page, pageCount, total };
 }

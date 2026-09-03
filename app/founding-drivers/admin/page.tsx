@@ -1,20 +1,19 @@
+import { ContributionCard } from "./contribution-card";
+import { formatDate, StatusBadge } from "./review-display";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getFoundingDriverAdminContext } from "@/lib/founding-drivers/auth";
 import { loadFoundingDriverAdminDashboard } from "@/lib/founding-drivers/data";
 import type {
-  Contribution,
   Enrollment,
   Profile,
   Progress,
-  StopSummary,
 } from "@/lib/founding-drivers/types";
 import {
   confirmQualification,
   enrollDriver,
   extendProgram,
-  reviewContribution,
   signOut,
   updateProgramStatus,
   updateReward,
@@ -26,36 +25,6 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = "force-dynamic";
-
-const statusLabels: Record<string, string> = {
-  pending: "Pending",
-  active: "Active",
-  qualified: "Qualified",
-  completed: "Completed",
-  withdrawn: "Withdrawn",
-  counts: "Counts",
-  needs_clarification: "Needs clarification",
-  does_not_count: "Does not count",
-  not_earned: "Not earned",
-  earned: "Earned",
-  paid: "Paid",
-  venmo: "Venmo",
-  amazon_gift_card: "Amazon gift card",
-  other: "Other",
-};
-
-function formatDate(value: string | null, includeTime = false) {
-  if (!value) return "—";
-  const date = includeTime ? new Date(value) : new Date(`${value}T12:00:00Z`);
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-    ...(includeTime
-      ? { hour: "numeric", minute: "2-digit", timeZone: "America/Denver" }
-      : { timeZone: "UTC" }),
-  }).format(date);
-}
 
 function denverToday() {
   const parts = new Intl.DateTimeFormat("en-US", {
@@ -77,26 +46,6 @@ function money(cents: number) {
   }).format(cents / 100);
 }
 
-function statusClass(status: string) {
-  if (["active", "counts", "earned", "paid", "qualified"].includes(status)) {
-    return "border-emerald-400/25 bg-emerald-400/10 text-emerald-200";
-  }
-  if (["pending", "needs_clarification"].includes(status)) {
-    return "border-amber-400/25 bg-amber-400/10 text-amber-200";
-  }
-  return "border-white/10 bg-white/5 text-stone-300";
-}
-
-function StatusBadge({ status }: { status: string }) {
-  return (
-    <span
-      className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${statusClass(status)}`}
-    >
-      {statusLabels[status] ?? status}
-    </span>
-  );
-}
-
 function Metric({ label, value, detail }: { label: string; value: string; detail?: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
@@ -104,126 +53,6 @@ function Metric({ label, value, detail }: { label: string; value: string; detail
       <p className="mt-2 text-2xl font-semibold tracking-[-0.035em] text-white">{value}</p>
       {detail ? <p className="mt-1 text-xs text-stone-500">{detail}</p> : null}
     </div>
-  );
-}
-
-function fieldLabel(value: string) {
-  return value
-    .replace("back_in", "Back In")
-    .replace("truck_fit", "Truck Fit")
-    .replace("delivery_type", "Delivery Type")
-    .replace("delivery_zone", "Delivery Zone");
-}
-
-function snapshotValue(key: string, value: unknown) {
-  if (key === "delivery_zone") return value ? "Captured" : "Missing";
-  if (typeof value === "boolean") return value ? "Yes" : "No";
-  if (value === null || value === undefined || value === "") return "Missing";
-  return String(value).replaceAll("_", " ");
-}
-
-function ContributionCard({
-  contribution,
-  profile,
-  stop,
-}: {
-  contribution: Contribution;
-  profile?: Profile;
-  stop?: StopSummary;
-}) {
-  return (
-    <details className="group rounded-2xl border border-white/10 bg-[#171c20]">
-      <summary className="flex cursor-pointer list-none items-start justify-between gap-4 p-5 marker:content-none">
-        <div>
-          <div className="flex flex-wrap items-center gap-2">
-            <h3 className="font-semibold text-white">{stop?.name ?? "Unknown stop"}</h3>
-            <StatusBadge status={contribution.review_status} />
-          </div>
-          <p className="mt-1 text-sm text-stone-400">
-            {profile?.username ?? "Unknown driver"} ·{" "}
-            {contribution.contribution_type === "new_stop" ? "New stop" : "Completed existing stop"}
-          </p>
-          <p className="mt-1 text-xs text-stone-500">
-            Submitted {formatDate(contribution.submitted_at, true)}
-          </p>
-        </div>
-        <span
-          aria-hidden="true"
-          className="mt-1 text-lg text-stone-500 transition-transform group-open:rotate-180"
-        >
-          ⌄
-        </span>
-      </summary>
-      <div className="border-t border-white/10 p-5">
-      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
-        <div>
-          <div className="flex flex-wrap items-center gap-2">
-            <h3 className="font-semibold text-white">{stop?.name ?? "Unknown stop"}</h3>
-            <StatusBadge status={contribution.review_status} />
-          </div>
-          <p className="mt-1 text-sm text-stone-400">
-            {profile?.username ?? "Unknown driver"} ·{" "}
-            {contribution.contribution_type === "new_stop" ? "New stop" : "Completed existing stop"}
-          </p>
-          <p className="mt-1 text-xs text-stone-500">
-            {stop?.address ?? contribution.stop_id} · Submitted{" "}
-            {formatDate(contribution.submitted_at, true)}
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {contribution.completed_fields.map((field) => (
-            <span
-              key={field}
-              className="rounded-full bg-white/5 px-2.5 py-1 text-xs text-stone-300"
-            >
-              {fieldLabel(field)}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <dl className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-        {Object.entries(contribution.core_snapshot).map(([key, value]) => (
-          <div key={key} className="rounded-xl border border-white/8 bg-black/20 p-3">
-            <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-stone-500">
-              {fieldLabel(key)}
-            </dt>
-            <dd className="mt-1 text-sm capitalize text-stone-200">{snapshotValue(key, value)}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <form action={reviewContribution} className="mt-5 grid gap-3 lg:grid-cols-[13rem_1fr_auto]">
-        <input type="hidden" name="contribution_id" value={contribution.id} />
-        <label className="grid gap-1 text-xs font-semibold text-stone-400">
-          Decision
-          <select
-            name="review_status"
-            defaultValue={contribution.review_status}
-            className="min-h-11 rounded-xl border border-white/15 bg-[#0e1215] px-3 text-sm text-white"
-          >
-            <option value="pending">Pending</option>
-            <option value="counts">Counts</option>
-            <option value="needs_clarification">Needs clarification</option>
-            <option value="does_not_count">Does not count</option>
-          </select>
-        </label>
-        <label className="grid gap-1 text-xs font-semibold text-stone-400">
-          Review note
-          <input
-            name="review_note"
-            defaultValue={contribution.review_note ?? ""}
-            maxLength={500}
-            placeholder="Optional clarification or reason"
-            className="min-h-11 rounded-xl border border-white/15 bg-[#0e1215] px-3 text-sm text-white"
-          />
-        </label>
-        <button className="sunrise-button min-h-11 self-end rounded-full px-5 text-sm font-semibold text-[#120b06]">
-          Save review
-        </button>
-      </form>
-      </div>
-    </details>
   );
 }
 
@@ -430,9 +259,6 @@ export default async function FoundingDriverAdminPage({
   const unresolvedReviews = data.contributions.filter((item) =>
     ["pending", "needs_clarification"].includes(item.review_status),
   );
-  const reviewedContributions = data.contributions
-    .filter((item) => !["pending", "needs_clarification"].includes(item.review_status))
-    .sort((a, b) => b.submitted_at.localeCompare(a.submitted_at));
   unresolvedReviews.sort((a, b) => a.submitted_at.localeCompare(b.submitted_at));
   const activeDrivers = data.enrollments.filter((item) => item.status === "active").length;
   const eligibleDrivers = data.progress.filter((item) => item.base_reward_eligible).length;
@@ -615,32 +441,10 @@ export default async function FoundingDriverAdminPage({
           </div>
         </section>
 
-        <section aria-labelledby="reviewed-heading">
-          <div>
-            <p className="eyebrow">Completed decisions</p>
-            <h2 id="reviewed-heading" className="mt-2 text-2xl font-semibold tracking-[-0.03em]">
-              Reviewed contributions
-            </h2>
-            <p className="mt-2 text-sm text-stone-400">
-              Completed reviews stay collapsed here for quick reference.
-            </p>
-          </div>
-          <div className="mt-5 grid gap-4">
-            {reviewedContributions.length ? (
-              reviewedContributions.map((contribution) => (
-                <ContributionCard
-                  key={contribution.id}
-                  contribution={contribution}
-                  profile={profileById.get(contribution.user_id)}
-                  stop={stopById.get(contribution.stop_id)}
-                />
-              ))
-            ) : (
-              <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.025] px-5 py-10 text-center text-sm text-stone-500">
-                No contributions have been reviewed yet.
-              </div>
-            )}
-          </div>
+        <section aria-labelledby="reviewed-heading" className="rounded-2xl border border-white/10 bg-[#171c20] p-5">
+          <h2 id="reviewed-heading" className="text-2xl font-semibold">Reviewed contributions</h2>
+          <p className="mt-2 text-sm text-stone-400">Browse completed decisions or update an earlier review.</p>
+          <Link href="/founding-drivers/admin/history" className="mt-4 inline-flex min-h-11 items-center rounded-full border border-white/15 px-5 text-sm font-semibold text-amber-200">View history →</Link>
         </section>
 
         <section aria-labelledby="drivers-heading">

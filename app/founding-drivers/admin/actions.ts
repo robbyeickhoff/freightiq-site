@@ -10,6 +10,8 @@ import type {
   ReviewStatus,
 } from "@/lib/founding-drivers/types";
 
+import { parseHistoryPage } from "@/lib/founding-drivers/data";
+
 const ADMIN_PATH = "/founding-drivers/admin";
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -65,9 +67,11 @@ function denverToday() {
   return `${part("year")}-${part("month")}-${part("day")}`;
 }
 
-function finish(message: string, kind: "notice" | "error" = "notice"): never {
+function finish(message: string, kind: "notice" | "error" = "notice", historyPage?: number): never {
   revalidatePath(ADMIN_PATH);
-  redirect(`${ADMIN_PATH}?${kind}=${encodeURIComponent(message)}`);
+  revalidatePath(`${ADMIN_PATH}/history`);
+  const destination = historyPage ? `${ADMIN_PATH}/history?page=${historyPage}&` : `${ADMIN_PATH}?`;
+  redirect(`${destination}${kind}=${encodeURIComponent(message)}`);
 }
 
 export async function signOut() {
@@ -117,13 +121,14 @@ export async function reviewContribution(formData: FormData) {
   const { supabase } = await requireFoundingDriverAdmin();
   const contributionId = value(formData, "contribution_id");
   const reviewStatus = value(formData, "review_status") as ReviewStatus;
+  const historyPage = value(formData, "history_page") ? parseHistoryPage(value(formData, "history_page")) : undefined;
   const reviewNote = value(formData, "review_note");
 
   if (!validUuid(contributionId) || !reviewStatuses.includes(reviewStatus)) {
-    finish("Choose a valid review decision.", "error");
+    finish("Choose a valid review decision.", "error", historyPage);
   }
   if (reviewNote.length > 500) {
-    finish("Review notes must be 500 characters or fewer.", "error");
+    finish("Review notes must be 500 characters or fewer.", "error", historyPage);
   }
 
   const { data, error } = await supabase
@@ -134,10 +139,10 @@ export async function reviewContribution(formData: FormData) {
     .maybeSingle();
 
   if (error || !data) {
-    finish("That contribution could not be updated.", "error");
+    finish("That contribution could not be updated.", "error", historyPage);
   }
 
-  finish("Contribution review saved.");
+  finish("Contribution review saved.", "notice", historyPage);
 }
 
 export async function extendProgram(formData: FormData) {
