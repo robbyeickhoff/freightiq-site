@@ -10,6 +10,7 @@ import type {
   StopSummary,
 } from "@/lib/founding-drivers/types";
 import RewardPreferenceForm from "./RewardPreferenceForm";
+import EmailNotificationForm from "./EmailNotificationForm";
 import ProfileImageForm from "./ProfileImageForm";
 import { signOut } from "./actions";
 
@@ -338,6 +339,8 @@ export default async function FoundingDriversPage() {
         </section>
 
         <RewardPreferenceForm method={data.rewardPreference.payment_preference} details={data.rewardPreference.payment_preference_note} />
+
+        <EmailNotificationForm enabled={data.contributionReviewEmails} />
 
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
           <section aria-labelledby="reviews-heading">

@@ -115,6 +115,15 @@ export async function enrollDriver(formData: FormData) {
   finish(`${profile.username} is enrolled and the 30-day clock is active.`);
 }
 
+export async function queueWelcomeEmail(formData: FormData) {
+  const { supabase } = await requireFoundingDriverAdmin();
+  const enrollmentId = value(formData, "enrollment_id");
+  if (!validUuid(enrollmentId)) finish("That enrollment could not be found.", "error");
+  const { error } = await supabase.rpc("queue_founding_driver_welcome", { p_enrollment_id: enrollmentId });
+  if (error) finish("The welcome email could not be queued.", "error");
+  finish("Welcome email queued for delivery.");
+}
+
 export async function reviewContribution(formData: FormData) {
   const { supabase } = await requireFoundingDriverAdmin();
   const contributionId = value(formData, "contribution_id");

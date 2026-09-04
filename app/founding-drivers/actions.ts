@@ -89,3 +89,15 @@ export async function saveRewardPreference(
   revalidatePath("/founding-drivers/admin");
   return { ok: true, message: "Reward preference saved." };
 }
+
+export async function saveEmailPreference(
+  _previous: { ok: boolean; message: string },
+  formData: FormData,
+): Promise<{ ok: boolean; message: string }> {
+  const { supabase } = await requireFoundingDriver();
+  const enabled = formData.get("enabled") === "yes";
+  const { error } = await supabase.rpc("set_founding_driver_email_preference", { p_enabled: enabled });
+  if (error) return { ok: false, message: "Your email setting could not be saved. Please try again." };
+  revalidatePath("/founding-drivers");
+  return { ok: true, message: enabled ? "Review emails turned on." : "Review emails turned off." };
+}

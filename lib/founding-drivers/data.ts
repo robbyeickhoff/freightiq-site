@@ -1,6 +1,7 @@
 import { requireFoundingDriverAdmin } from "./auth";
 import type {
   Contribution,
+  DriverEmailStatus,
   Enrollment,
   Profile,
   Progress,
@@ -16,7 +17,7 @@ function assertQuerySucceeded(error: { message: string } | null, label: string) 
 export async function loadFoundingDriverAdminDashboard() {
   const { supabase } = await requireFoundingDriverAdmin();
 
-  const [profilesResult, enrollmentsResult, progressResult, contributionsResult] =
+  const [profilesResult, enrollmentsResult, progressResult, contributionsResult, emailStatusResult] =
     await Promise.all([
       supabase.from("profiles").select("id, username, created_at").order("username"),
       supabase
@@ -37,12 +38,14 @@ export async function loadFoundingDriverAdminDashboard() {
         )
         .in("review_status", ["pending", "needs_clarification"])
         .order("submitted_at", { ascending: true }),
+      supabase.rpc("get_founding_driver_email_admin_status"),
     ]);
 
   assertQuerySucceeded(profilesResult.error, "driver profiles");
   assertQuerySucceeded(enrollmentsResult.error, "program enrollments");
   assertQuerySucceeded(progressResult.error, "program progress");
   assertQuerySucceeded(contributionsResult.error, "contribution reviews");
+  assertQuerySucceeded(emailStatusResult.error, "driver email status");
 
   const profiles = (profilesResult.data ?? []) as Profile[];
   const enrollments = (enrollmentsResult.data ?? []) as Enrollment[];
@@ -68,6 +71,7 @@ export async function loadFoundingDriverAdminDashboard() {
     progress,
     contributions,
     stops,
+    emailStatuses: (emailStatusResult.data ?? []) as DriverEmailStatus[],
     availableProfiles: profiles.filter((profile) => !enrolledUserIds.has(profile.id)),
   };
 }

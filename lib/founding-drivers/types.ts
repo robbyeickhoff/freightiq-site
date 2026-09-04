@@ -14,6 +14,12 @@ export type ReviewStatus =
 export type PaymentPreference = "venmo" | "paypal" | "cash_app" | "amazon_gift_card" | "other";
 export type PaymentStatus = "not_earned" | "earned" | "paid";
 
+export type DriverEmailStatus = {
+  enrollment_id: string;
+  welcome_state: "not_sent" | "queued" | "sent";
+  welcome_updated_at: string | null;
+};
+
 export type Profile = {
   id: string;
   username: string;

@@ -7,6 +7,7 @@ import { getFoundingDriverAdminContext } from "@/lib/founding-drivers/auth";
 import { loadFoundingDriverAdminDashboard } from "@/lib/founding-drivers/data";
 import type {
   Enrollment,
+  DriverEmailStatus,
   Profile,
   Progress,
 } from "@/lib/founding-drivers/types";
@@ -17,6 +18,7 @@ import {
   signOut,
   updateProgramStatus,
   updateReward,
+  queueWelcomeEmail,
 } from "./actions";
 
 export const metadata: Metadata = {
@@ -61,16 +63,38 @@ function DriverCard({
   profile,
   progress,
   pendingReviews,
+  emailStatus,
 }: {
   enrollment: Enrollment;
   profile?: Profile;
   progress?: Progress;
   pendingReviews: number;
+  emailStatus?: DriverEmailStatus;
 }) {
   const earnedCents = progress?.earned_reward_cents ?? 0;
 
   return (
-    <article className="rounded-[1.75rem] border border-white/10 bg-[#14191d] p-5 sm:p-6">
+    <details className="group rounded-[1.75rem] border border-white/10 bg-[#14191d]">
+      <summary className="cursor-pointer list-none p-5 marker:content-none sm:p-6 [&::-webkit-details-marker]:hidden">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <h3 className="truncate text-xl font-semibold text-white">{profile?.username ?? "Unknown driver"}</h3>
+              <StatusBadge status={enrollment.status} />
+              {enrollment.permanent_founding_driver ? <span className="rounded-full bg-gradient-to-r from-orange-700 to-amber-500 px-2.5 py-1 text-xs font-bold text-[#160b05]">Founding Driver</span> : null}
+            </div>
+            <p className="mt-2 text-sm text-stone-400">{formatDate(enrollment.start_date)} – {formatDate(enrollment.end_date)}</p>
+          </div>
+          <span aria-hidden="true" className="mt-1 text-xl text-stone-500 transition-transform group-open:rotate-180">⌄</span>
+        </div>
+        <div className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 text-sm sm:grid-cols-4">
+          <p><span className="block text-xs uppercase tracking-wide text-stone-500">Active days</span><span className="font-semibold text-white">{progress?.active_days ?? 0} / {progress?.active_days_target ?? 10}</span></p>
+          <p><span className="block text-xs uppercase tracking-wide text-stone-500">Stops</span><span className="font-semibold text-white">{progress?.qualifying_stops ?? 0} / {progress?.base_stop_target ?? 10}</span></p>
+          <p><span className="block text-xs uppercase tracking-wide text-stone-500">Pending</span><span className="font-semibold text-white">{pendingReviews}</span></p>
+          <p><span className="block text-xs uppercase tracking-wide text-stone-500">Reward</span><span className="font-semibold text-amber-300">{money(earnedCents)}</span></p>
+        </div>
+      </summary>
+      <div className="border-t border-white/10 p-5 sm:p-6">
       <div className="flex flex-col justify-between gap-4 border-b border-white/10 pb-5 sm:flex-row sm:items-start">
         <div>
           <div className="flex flex-wrap items-center gap-3">
@@ -216,7 +240,26 @@ function DriverCard({
           </form>
         </section>
       </div>
-    </article>
+      <section className="mt-4 rounded-2xl border border-white/10 bg-black/15 p-4">
+        <h4 className="text-sm font-semibold text-white">Welcome email</h4>
+        <p className="mt-2 text-sm text-stone-400">
+          {emailStatus?.welcome_state === "sent"
+            ? `Sent ${formatDate(emailStatus.welcome_updated_at, true)}`
+            : emailStatus?.welcome_state === "queued"
+              ? "Queued for delivery"
+              : "Not sent"}
+        </p>
+        {emailStatus?.welcome_state !== "queued" ? (
+          <form action={queueWelcomeEmail} className="mt-3">
+            <input type="hidden" name="enrollment_id" value={enrollment.id} />
+            <button className="min-h-11 rounded-full border border-white/15 px-4 text-sm font-semibold text-stone-200 hover:border-amber-400/50">
+              {emailStatus?.welcome_state === "sent" ? "Send welcome email again" : "Send welcome email"}
+            </button>
+          </form>
+        ) : null}
+      </section>
+      </div>
+    </details>
   );
 }
 
@@ -237,6 +280,9 @@ export default async function FoundingDriverAdminPage({
   const profileById = new Map(data.profiles.map((profile) => [profile.id, profile]));
   const progressByEnrollment = new Map(
     data.progress.map((progress) => [progress.enrollment_id, progress]),
+  );
+  const emailStatusByEnrollment = new Map(
+    data.emailStatuses.map((status) => [status.enrollment_id, status]),
   );
   const stopById = new Map(data.stops.map((stop) => [stop.id, stop]));
   const unresolvedReviews = data.contributions.filter((item) =>
@@ -446,6 +492,7 @@ export default async function FoundingDriverAdminPage({
                   profile={profileById.get(enrollment.user_id)}
                   progress={progressByEnrollment.get(enrollment.id)}
                   pendingReviews={pendingReviewsByEnrollment.get(enrollment.id) ?? 0}
+                  emailStatus={emailStatusByEnrollment.get(enrollment.id)}
                 />
               ))
             ) : (

@@ -19,7 +19,7 @@ type RawLeaderboardEntry = Omit<LeaderboardEntry, "has_profile_image">;
 export async function loadFoundingDriverDashboard() {
   const { supabase, userId } = await requireFoundingDriver();
 
-  const [profileResult, progressResult, contributionsResult, leaderboardResult, preferenceResult] = await Promise.all([
+  const [profileResult, progressResult, contributionsResult, leaderboardResult, preferenceResult, emailPreferenceResult] = await Promise.all([
     supabase
       .from("profiles")
       .select("id, username, created_at, profile_image_path")
@@ -41,6 +41,7 @@ export async function loadFoundingDriverDashboard() {
     supabase.from("founding_driver_enrollments")
       .select("payment_preference, payment_preference_note")
       .eq("user_id", userId).single(),
+    supabase.rpc("get_founding_driver_email_preference"),
   ]);
 
   assertQuerySucceeded(preferenceResult.error, "your reward preference");
@@ -48,6 +49,7 @@ export async function loadFoundingDriverDashboard() {
   assertQuerySucceeded(progressResult.error, "your Founding Driver progress");
   assertQuerySucceeded(contributionsResult.error, "your contribution reviews");
   assertQuerySucceeded(leaderboardResult.error, "the Founding Driver leaderboard");
+  assertQuerySucceeded(emailPreferenceResult.error, "your email notification setting");
 
   if (!profileResult.data || !progressResult.data) {
     throw new Error("Your Founding Driver enrollment is missing required profile or progress data.");
@@ -81,6 +83,7 @@ export async function loadFoundingDriverDashboard() {
 
   return {
     rewardPreference: preferenceResult.data as Pick<Enrollment, "payment_preference" | "payment_preference_note">,
+    contributionReviewEmails: emailPreferenceResult.data === true,
     profile: profileResult.data as DriverProfile,
     progress: progressResult.data as DriverProgress,
     contributions,
