@@ -1,4 +1,5 @@
 import { ContributionCard } from "./contribution-card";
+import { StatusMessage } from "./StatusMessage";
 import { formatDate, StatusBadge } from "./review-display";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -338,22 +339,8 @@ export default async function FoundingDriverAdminPage({
       </section>
 
       <div className="mx-auto grid max-w-7xl gap-8 px-5 py-10 sm:px-8">
-        {notice ? (
-          <p
-            className="rounded-2xl border border-emerald-400/25 bg-emerald-400/10 px-5 py-4 text-sm text-emerald-100"
-            role="status"
-          >
-            {notice}
-          </p>
-        ) : null}
-        {error ? (
-          <p
-            className="rounded-2xl border border-rose-400/25 bg-rose-400/10 px-5 py-4 text-sm text-rose-100"
-            role="alert"
-          >
-            {error}
-          </p>
-        ) : null}
+        {notice ? <StatusMessage kind="notice" message={notice} /> : null}
+        {error ? <StatusMessage kind="error" message={error} /> : null}
 
         <section aria-labelledby="overview-heading">
           <div className="flex items-end justify-between gap-4">
