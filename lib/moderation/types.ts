@@ -7,9 +7,10 @@ export type ModerationOutcome =
 
 export type ModerationQueueItem = {
   id: string;
-  subject_type: "report" | "stop";
+  subject_type: "report" | "stop" | "operations_update";
   report_id: string | null;
   stop_id: string | null;
+  operations_update_id: string | null;
   reporter_user_id: string;
   reporter_username: string | null;
   subject_owner_user_id: string | null;

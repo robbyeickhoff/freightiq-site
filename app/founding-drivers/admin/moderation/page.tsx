@@ -19,6 +19,10 @@ const reasonLabels: Record<string, string> = {
   abusive_or_inappropriate: "Abusive or inappropriate",
   spam_or_unrelated: "Spam or unrelated",
   other: "Other",
+  outdated: "Outdated",
+  inaccurate: "Inaccurate",
+  duplicate: "Duplicate",
+  inappropriate: "Inappropriate",
 };
 
 const outcomeOptions = [
@@ -119,7 +123,11 @@ export default async function ModerationPage({
                   <div className="flex flex-col justify-between gap-3 sm:flex-row">
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-300">
-                        {item.subject_type === "report" ? "Driver Report" : "Stop"}
+                        {item.subject_type === "report"
+                          ? "Driver Report"
+                          : item.subject_type === "operations_update"
+                            ? "Operations Update"
+                            : "Stop"}
                       </p>
                       <h3 className="mt-2 text-xl font-semibold">
                         {reasonLabels[item.reason] ?? item.reason}

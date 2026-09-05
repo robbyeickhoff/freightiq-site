@@ -161,8 +161,8 @@ export default function PrivacyPolicyPage() {
                 </p>
                 <p className="mt-2 text-sm leading-6 text-stone-400">
                   FreightIQ collects information needed to operate accounts, driver profiles, shared
-                  stop intelligence, map features, Early Access requests, and support
-                  communications.
+                  stop intelligence, Operations updates, map features, Early Access requests, and
+                  support communications.
                 </p>
               </article>
               <article className="rounded-[1.35rem] border border-white/10 bg-white/[0.035] p-5">
@@ -170,9 +170,9 @@ export default function PrivacyPolicyPage() {
                   Foreground location, not a history
                 </p>
                 <p className="mt-2 text-sm leading-6 text-stone-400">
-                  FreightIQ uses foreground location to center the map and provide nearby search
-                  results. FreightIQ does not intentionally maintain continuous device-location
-                  history.
+                  FreightIQ uses foreground location to center the map, provide nearby search
+                  results, and identify a nearby Operations update while the app is open. FreightIQ
+                  does not intentionally maintain continuous device-location history.
                 </p>
               </article>
               <article className="rounded-[1.35rem] border border-orange-400/20 bg-orange-400/[0.07] p-5">
@@ -234,6 +234,12 @@ export default function PrivacyPolicyPage() {
                       approach guidance, operational notes, business contact details, votes,
                       timestamps, and contributor identifiers.
                     </p>
+                    <p className="mt-3">
+                      Operations updates may include a broad operating area, category, short
+                      condition report, optional stop or map location, expiration, confirmation
+                      responses, timestamps, and contributor identifier. The contributor&apos;s
+                      username and Founding Driver status may appear with an active update.
+                    </p>
                   </div>
 
                   <div>
@@ -254,6 +260,14 @@ export default function PrivacyPolicyPage() {
                       FreightIQ does not intentionally maintain continuous device-location history.
                       Stop and delivery-zone coordinates that you deliberately create or update are
                       stored as shared stop intelligence.
+                    </p>
+                    <p className="mt-3">
+                      When FreightIQ is open, the app may compare your current device location and
+                      heading with active Operations update locations to ask whether a nearby
+                      condition is still present. The comparison occurs for the foreground feature;
+                      FreightIQ does not store your live position, heading, speed, route, or
+                      proximity history. Your Yes or No response and its time are stored with the
+                      update.
                     </p>
                   </div>
 
@@ -341,6 +355,12 @@ export default function PrivacyPolicyPage() {
                     Do not submit personal, confidential, or sensitive information that is not
                     necessary to describe the delivery stop.
                   </div>
+                  <p>
+                    Active Operations updates are shared with signed-in FreightIQ users and expire
+                    automatically. They may identify the contributor by username and Founding
+                    Driver status, but do not display the contributor&apos;s email address or live
+                    location. Reports about an update are private to FreightIQ moderators.
+                  </p>
                 </PolicySection>
 
                 <PolicySection id="when-information-is-shared" title="When information is shared">
@@ -407,6 +427,12 @@ export default function PrivacyPolicyPage() {
                     Contact, Early Access, and Founding Drivers Program submissions are retained
                     only as long as reasonably necessary to respond, administer access, maintain
                     appropriate business records, or satisfy legal obligations.
+                  </p>
+                  <p>
+                    Expired, resolved, or removed Operations updates and their confirmation records
+                    may be retained for pilot review, safety, and moderation. Open reports and a
+                    deleting user&apos;s confirmation records are removed through the account-deletion
+                    process, subject to legal or security retention requirements.
                   </p>
                   <p>
                     Some information may remain temporarily in routine service backups before being

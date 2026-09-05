@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const guidelines = [
   {
     title: "Keep contributions operational",
-    copy: "Share delivery access, equipment fit, approach, receiving, parking, and temporary-condition information that helps another driver complete the stop.",
+    copy: "Share delivery access, equipment fit, approach, receiving, parking, road, weather, construction, and temporary-condition information that helps another driver complete the stop or route.",
   },
   {
     title: "Be accurate and clear",
@@ -19,7 +19,7 @@ const guidelines = [
   },
   {
     title: "Protect private information",
-    copy: "Do not post passwords, gate codes, private paperwork, personal details, or unrelated contact information. Only share business contact details when they are appropriate for completing a delivery.",
+    copy: "Do not post passwords, gate codes, PINs, alarm instructions, credentials, private paperwork, shipment identifiers, customer-specific details, personal details, live driver locations, or unrelated contact information. Use Locked Personal Intel for sensitive access details when that feature applies.",
   },
   {
     title: "Treat people professionally",
@@ -88,7 +88,7 @@ export default function CommunityGuidelinesPage() {
           </div>
         </section>
 
-        <p className="mt-8 text-sm text-stone-500">Last updated August 2026.</p>
+        <p className="mt-8 text-sm text-stone-500">Last updated September 2026.</p>
       </div>
     </main>
   );
