@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 
 export const metadata: Metadata = {
-  title: "FreightIQ Demo Videos | See FreightIQ in Action",
+  title: "Demo Videos | See FreightIQ in Action",
   description:
     "Watch FreightIQ demos for delivery drivers, dispatchers, and supervisors. See how drivers prepare for stops, preserve delivery knowledge, and help new drivers get up to speed faster.",
   alternates: {
@@ -70,6 +72,16 @@ const demos = [
 export default function DemosPage() {
   return (
     <main className="overflow-hidden bg-[#090c0f] text-white">
+      <JsonLd
+        data={demos.map((demo) => ({
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: demo.iframeTitle,
+          description: demo.description,
+          thumbnailUrl: `https://i.ytimg.com/vi/${demo.videoId}/hqdefault.jpg`,
+          embedUrl: `https://www.youtube-nocookie.com/embed/${demo.videoId}`,
+        }))}
+      />
       <section className="relative border-b border-white/10 bg-[#080b0d]">
         <div className="absolute inset-0 sunrise-grid opacity-30" aria-hidden="true" />
         <div
@@ -136,14 +148,9 @@ export default function DemosPage() {
                 ) : null}
                 <div className="mx-auto mt-7 w-full max-w-[19rem] overflow-hidden rounded-[1.8rem] border border-white/10 bg-black p-2">
                   <div className="aspect-[9/16] overflow-hidden rounded-[1.4rem] bg-black">
-                    <iframe
-                      className="h-full w-full"
-                      src={`https://www.youtube-nocookie.com/embed/${demo.videoId}`}
+                    <YouTubeEmbed
+                      videoId={demo.videoId}
                       title={demo.iframeTitle}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
                     />
                   </div>
                 </div>

@@ -94,7 +94,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
               Product
             </h2>
             <ul className="mt-5 space-y-3 text-sm text-stone-300">
@@ -112,7 +112,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
+            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
               Support
             </h2>
             <ul className="mt-5 space-y-3 text-sm text-stone-300">
@@ -130,7 +130,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-7 text-xs text-stone-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 pt-7 text-xs text-stone-400 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} FreightIQ. All rights reserved.</p>
           <p>Built around the realities of local delivery.</p>
         </div>

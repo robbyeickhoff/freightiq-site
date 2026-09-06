@@ -3,7 +3,7 @@ import Link from "next/link";
 import { HowItWorksWorkflow } from "@/components/HowItWorksWorkflow";
 
 export const metadata: Metadata = {
-  title: "How FreightIQ Works | FreightIQ",
+  title: "How FreightIQ Works",
   description:
     "See how FreightIQ helps local delivery drivers find stops, review practical stop intelligence, plan deliveries, and preserve knowledge for the next driver.",
   alternates: {

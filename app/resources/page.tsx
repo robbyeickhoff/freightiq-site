@@ -5,7 +5,7 @@ const description =
   "Practical FreightIQ guides for delivery drivers, dispatchers, and supervisors who want better stop knowledge and smoother deliveries.";
 
 export const metadata: Metadata = {
-  title: "Delivery Driver Resources | FreightIQ",
+  title: "Delivery Driver Resources",
   description,
   alternates: { canonical: "/resources" },
   openGraph: {

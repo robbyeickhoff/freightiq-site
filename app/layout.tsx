@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
+import { JsonLd } from "../components/JsonLd";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -64,6 +65,31 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full`}
     >
       <body className="flex min-h-full flex-col antialiased">
+        <JsonLd
+          data={[
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://freightiqapp.com/#organization",
+              name: "FreightIQ",
+              url: "https://freightiqapp.com",
+              logo: "https://freightiqapp.com/freightiq-sunrise-icon-v1.png",
+              sameAs: [
+                "https://www.facebook.com/profile.php?id=61593729710264",
+                "https://www.instagram.com/freightiqapp/",
+                "https://x.com/FreightIQapp",
+              ],
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://freightiqapp.com/#website",
+              url: "https://freightiqapp.com",
+              name: "FreightIQ",
+              publisher: { "@id": "https://freightiqapp.com/#organization" },
+            },
+          ]}
+        />
         <SiteHeader />
         {children}
         <SiteFooter />

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 
 const description =
   "Straight answers to common driver questions about FreightIQ, including how it works, contributing stop information, privacy, availability, and early access.";
@@ -81,6 +82,20 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <main className="overflow-hidden bg-[#f1eee8] text-[#171513]">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: questions.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.answer,
+            },
+          })),
+        }}
+      />
       <section className="relative border-b border-white/10 bg-[#080b0d] text-white">
         <div className="absolute inset-0 sunrise-grid opacity-35" aria-hidden="true" />
         <div

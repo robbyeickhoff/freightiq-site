@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FoundingDriverRequestForm } from "../../components/FoundingDriverRequestForm";
+import { JsonLd } from "@/components/JsonLd";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 
 export const metadata: Metadata = {
   title: "Founding Drivers Program",
@@ -28,6 +30,17 @@ const coreIntel = ["Truck Fit", "Delivery Type", "Back In", "Delivery Zone"];
 export default function FoundingDriversProgramPage() {
   return (
     <main className="flex-1 bg-[#090c0f] text-white">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: "FreightIQ Founding Drivers Program",
+          description:
+            "See how Founding Drivers build useful delivery-stop knowledge and participate in the FreightIQ program.",
+          thumbnailUrl: "https://i.ytimg.com/vi/N80FrPgDa58/hqdefault.jpg",
+          embedUrl: "https://www.youtube-nocookie.com/embed/N80FrPgDa58",
+        }}
+      />
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="sunrise-grid absolute inset-0 opacity-25" aria-hidden="true" />
         <div
@@ -84,14 +97,9 @@ export default function FoundingDriversProgramPage() {
           </div>
           <div className="mx-auto w-full max-w-[21rem] overflow-hidden rounded-[2rem] border border-white/10 bg-black p-2 shadow-[0_28px_90px_rgba(0,0,0,0.38)]">
             <div className="aspect-[9/16] overflow-hidden rounded-[1.55rem] bg-black">
-              <iframe
-                className="h-full w-full"
-                src="https://www.youtube-nocookie.com/embed/N80FrPgDa58"
+              <YouTubeEmbed
+                videoId="N80FrPgDa58"
                 title="FreightIQ Founding Drivers Program — build better stop intel and earn rewards"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
               />
             </div>
           </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DriverShareActions } from "@/components/DriverShareActions";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 
 export const metadata: Metadata = {
   title: "FreightIQ for Drivers | Know Before You Arrive",
@@ -129,14 +130,9 @@ export default function DriverPage() {
           </div>
           <div className="mx-auto w-full max-w-[20rem] overflow-hidden rounded-[1.8rem] border border-white/10 bg-black p-2 shadow-[0_28px_80px_rgba(0,0,0,0.4)]">
             <div className="aspect-[9/16] overflow-hidden rounded-[1.4rem] bg-black">
-              <iframe
-                className="h-full w-full"
-                src="https://www.youtube-nocookie.com/embed/0Yd5yhLpkfw"
+              <YouTubeEmbed
+                videoId="0Yd5yhLpkfw"
                 title="FreightIQ demo — real driver intel before you arrive"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
               />
             </div>
           </div>

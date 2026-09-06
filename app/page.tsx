@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
+import { JsonLd } from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "FreightIQ | Real Driver Intel for Better Deliveries",
@@ -97,6 +99,17 @@ const trustPillars = [
 export default function FreightIQLandingPage() {
   return (
     <main className="overflow-hidden bg-[#090c0f] text-white">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "VideoObject",
+          name: "FreightIQ demo — real driver intel before you arrive",
+          description:
+            "See how delivery drivers use FreightIQ to prepare for an unfamiliar commercial stop.",
+          thumbnailUrl: "https://i.ytimg.com/vi/0Yd5yhLpkfw/hqdefault.jpg",
+          embedUrl: "https://www.youtube-nocookie.com/embed/0Yd5yhLpkfw",
+        }}
+      />
       <section className="relative border-b border-white/10 bg-[#080b0d]">
         <div className="relative h-[23rem] overflow-hidden lg:absolute lg:inset-0 lg:h-auto">
           <Image
@@ -104,6 +117,7 @@ export default function FreightIQLandingPage() {
             alt="A FreightIQ delivery truck approaching a receiving facility at sunrise"
             fill
             priority
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover object-[64%_center] lg:object-center"
           />
@@ -196,14 +210,9 @@ export default function FreightIQLandingPage() {
               </div>
               <div className="mx-auto w-full max-w-[17rem] overflow-hidden rounded-[1.65rem] border border-white/10 bg-black p-1.5">
                 <div className="aspect-[9/16] overflow-hidden rounded-[1.3rem] bg-black">
-                  <iframe
-                    className="h-full w-full"
-                    src="https://www.youtube-nocookie.com/embed/0Yd5yhLpkfw"
+                  <YouTubeEmbed
+                    videoId="0Yd5yhLpkfw"
                     title="FreightIQ demo — real driver intel before you arrive"
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
                   />
                 </div>
               </div>
@@ -231,7 +240,9 @@ export default function FreightIQLandingPage() {
       <section id="about" className="border-b border-white/10 bg-[#f1eee8] text-[#171513]">
         <div className="mx-auto grid max-w-7xl gap-12 px-5 py-18 sm:px-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-center lg:py-22">
           <div>
-            <p className="eyebrow text-orange-700">Why FreightIQ matters</p>
+            <p className="eyebrow" style={{ color: "#7c2d12" }}>
+              Why FreightIQ matters
+            </p>
             <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-0.045em] text-balance sm:text-5xl">
               FreightIQ preserves the knowledge behind a successful delivery.
             </h2>
@@ -268,7 +279,7 @@ export default function FreightIQLandingPage() {
                     Know the essentials before you arrive.
                   </p>
                 </div>
-                <span className="hidden font-mono text-xs text-stone-600 sm:block">01—04</span>
+                <span className="hidden font-mono text-xs text-stone-400 sm:block">01—04</span>
               </div>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 {essentials.map((item) => (
@@ -278,7 +289,7 @@ export default function FreightIQLandingPage() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="essential-icon h-10 w-10">{item.icon}</span>
-                      <span className="font-mono text-[0.65rem] text-stone-600">{item.number}</span>
+                      <span className="font-mono text-[0.65rem] text-stone-400">{item.number}</span>
                     </div>
                     <h3 className="mt-4 text-base font-semibold">{item.title}</h3>
                     <p className="mt-2 text-xs leading-5 text-stone-400">{item.description}</p>

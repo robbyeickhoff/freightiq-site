@@ -3,7 +3,7 @@ import Link from "next/link";
 import { RealExampleDiagram } from "@/components/RealExampleDiagram";
 
 export const metadata: Metadata = {
-  title: "Real Delivery Example | FreightIQ",
+  title: "Real Delivery Example",
   description:
     "See how FreightIQ helps a local delivery driver understand the correct truck approach, delivery zone, and stop details behind a business address.",
   alternates: {

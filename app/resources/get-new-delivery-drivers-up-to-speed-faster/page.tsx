@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 
 const title = "How to Get New Delivery Drivers Up to Speed Faster";
 const description =
@@ -29,6 +31,18 @@ export const metadata: Metadata = {
 export default function NewDriverTrainingResourcePage() {
   return (
     <main className="overflow-hidden bg-[#090c0f] text-white">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: title,
+          description,
+          mainEntityOfPage:
+            "https://freightiqapp.com/resources/get-new-delivery-drivers-up-to-speed-faster",
+          publisher: { "@id": "https://freightiqapp.com/#organization" },
+          image: "https://freightiqapp.com/freightiq-delivery-hero.png",
+        }}
+      />
       <section className="relative border-b border-white/10 bg-[#080b0d]">
         <div className="absolute inset-0 sunrise-grid opacity-30" aria-hidden="true" />
         <div className="absolute left-[52%] top-[-15rem] h-[36rem] w-[36rem] rounded-full bg-orange-500/12 blur-3xl" aria-hidden="true" />
@@ -136,14 +150,9 @@ export default function NewDriverTrainingResourcePage() {
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.035em]">Help new drivers start with useful stop knowledge.</h2>
             <div className="mx-auto mt-8 w-full max-w-[19rem] overflow-hidden rounded-[1.8rem] border border-white/10 bg-black p-2">
               <div className="aspect-[9/16] overflow-hidden rounded-[1.4rem] bg-black">
-                <iframe
-                  className="h-full w-full"
-                  src="https://www.youtube-nocookie.com/embed/RT83Pl9qOaA"
+                <YouTubeEmbed
+                  videoId="RT83Pl9qOaA"
                   title="How FreightIQ helps new delivery drivers get up to speed faster"
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
                 />
               </div>
             </div>
