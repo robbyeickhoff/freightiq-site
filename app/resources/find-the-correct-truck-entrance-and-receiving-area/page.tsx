@@ -6,6 +6,7 @@ const title = "Find the Correct Truck Entrance and Receiving Area";
 const description =
   "Learn how delivery drivers can distinguish a business address from the correct truck entrance, check-in point, receiving dock, and unloading area.";
 const canonical = "/resources/find-the-correct-truck-entrance-and-receiving-area";
+const publishedDate = "2026-09-06";
 
 export const metadata: Metadata = {
   title,
@@ -24,13 +25,16 @@ export const metadata: Metadata = {
 export default function TruckEntrancePage() {
   return (
     <main className="overflow-hidden bg-[#090c0f] text-white">
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: title, description, mainEntityOfPage: `https://freightiqapp.com${canonical}`, publisher: { "@id": "https://freightiqapp.com/#organization" }, image: "https://freightiqapp.com/freightiq-delivery-hero.png" }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: title, description, datePublished: publishedDate, dateModified: publishedDate, mainEntityOfPage: `https://freightiqapp.com${canonical}`, publisher: { "@id": "https://freightiqapp.com/#organization" }, image: "https://freightiqapp.com/freightiq-delivery-hero.png" }} />
 
       <section className="relative border-b border-white/10 bg-[#080b0d]">
         <div className="absolute inset-0 sunrise-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-24 lg:py-28">
           <Link href="/resources" className="text-sm font-semibold text-orange-300 hover:text-orange-200">← FreightIQ Resources</Link>
           <p className="eyebrow mt-8">Entrance and receiving</p>
+          <p className="mt-4 text-sm text-stone-400">
+            Published <time dateTime={publishedDate}>September 6, 2026</time>
+          </p>
           <h1 className="mt-5 max-w-5xl text-4xl font-semibold leading-[1.05] tracking-[-0.05em] text-balance sm:text-5xl lg:text-7xl">
             How to Find the Correct Truck Entrance and Receiving Area
           </h1>

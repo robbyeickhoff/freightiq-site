@@ -165,6 +165,12 @@ export default function FaqPage() {
                   →
                 </span>
               </Link>
+              <Link
+                href="/resources"
+                className="inline-flex min-h-13 items-center justify-center rounded-full border border-white/20 bg-white/[0.04] px-8 py-3.5 text-base font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/[0.08] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400"
+              >
+                Read Driver Resources
+              </Link>
             </div>
           </div>
         </div>

@@ -266,6 +266,12 @@ export default function FreightIQLandingPage() {
             >
               Why I Built FreightIQ <span aria-hidden="true">→</span>
             </Link>
+            <Link
+              href="/resources"
+              className="ml-6 mt-8 inline-flex items-center gap-2 rounded-md text-sm font-semibold text-stone-700 transition-colors hover:text-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
+            >
+              Read Driver Resources <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
           <div className="rounded-[2rem] border border-stone-300/80 bg-[#e8e3db] p-4 shadow-[0_28px_80px_rgba(54,42,30,0.12)] sm:p-5">

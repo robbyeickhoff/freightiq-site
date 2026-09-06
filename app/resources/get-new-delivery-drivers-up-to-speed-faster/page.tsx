@@ -6,6 +6,7 @@ import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 const title = "How to Get New Delivery Drivers Up to Speed Faster";
 const description =
   "Learn how supervisors can preserve practical stop knowledge, reduce repeated questions, and help new delivery drivers prepare for unfamiliar commercial stops.";
+const publishedDate = "2026-09-06";
 
 export const metadata: Metadata = {
   title,
@@ -37,6 +38,8 @@ export default function NewDriverTrainingResourcePage() {
           "@type": "Article",
           headline: title,
           description,
+          datePublished: publishedDate,
+          dateModified: publishedDate,
           mainEntityOfPage:
             "https://freightiqapp.com/resources/get-new-delivery-drivers-up-to-speed-faster",
           publisher: { "@id": "https://freightiqapp.com/#organization" },
@@ -51,6 +54,9 @@ export default function NewDriverTrainingResourcePage() {
             ← FreightIQ Resources
           </Link>
           <p className="eyebrow mt-8">For Dispatchers and Supervisors</p>
+          <p className="mt-4 text-sm text-stone-400">
+            Published <time dateTime={publishedDate}>September 6, 2026</time>
+          </p>
           <h1 className="mt-5 max-w-5xl text-4xl font-semibold leading-[1.05] tracking-[-0.05em] text-balance sm:text-5xl lg:text-7xl">
             How to Get New Delivery Drivers Up to Speed Faster—Without Starting Every Stop From Zero
           </h1>

@@ -160,10 +160,10 @@ export default function DriverPage() {
             </Link>
             <div className="mt-7">
               <Link
-                href="/"
+                href="/resources"
                 className="inline-flex items-center gap-2 rounded-md text-sm font-semibold text-stone-600 transition-colors hover:text-orange-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orange-700"
               >
-                Explore the full FreightIQ website <span aria-hidden="true">→</span>
+                Read practical driver resources <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>

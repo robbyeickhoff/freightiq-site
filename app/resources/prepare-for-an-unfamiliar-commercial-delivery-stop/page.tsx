@@ -7,6 +7,7 @@ const headline = title;
 const description =
   "Use this practical pre-arrival checklist to review truck access, receiving entrances, backing space, delivery zones, and stop conditions.";
 const canonical = "/resources/prepare-for-an-unfamiliar-commercial-delivery-stop";
+const publishedDate = "2026-09-06";
 
 export const metadata: Metadata = {
   title,
@@ -47,6 +48,8 @@ export default function UnfamiliarDeliveryStopPage() {
           "@type": "Article",
           headline,
           description,
+          datePublished: publishedDate,
+          dateModified: publishedDate,
           mainEntityOfPage: `https://freightiqapp.com${canonical}`,
           publisher: { "@id": "https://freightiqapp.com/#organization" },
           image: "https://freightiqapp.com/freightiq-delivery-hero.png",
@@ -60,6 +63,9 @@ export default function UnfamiliarDeliveryStopPage() {
             ← FreightIQ Resources
           </Link>
           <p className="eyebrow mt-8">Pre-arrival planning</p>
+          <p className="mt-4 text-sm text-stone-400">
+            Published <time dateTime={publishedDate}>September 6, 2026</time>
+          </p>
           <h1 className="mt-5 max-w-5xl text-4xl font-semibold leading-[1.05] tracking-[-0.05em] text-balance sm:text-5xl lg:text-7xl">
             How to Prepare for an Unfamiliar Delivery Location
           </h1>
