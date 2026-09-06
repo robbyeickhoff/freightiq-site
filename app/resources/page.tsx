@@ -4,6 +4,37 @@ import Link from "next/link";
 const description =
   "Practical FreightIQ guides for delivery drivers, dispatchers, and supervisors who want better stop knowledge and smoother deliveries.";
 
+const resources = [
+  {
+    category: "Driver Planning",
+    title: "How to Prepare for an Unfamiliar Delivery Location",
+    description:
+      "A practical pre-arrival checklist for access, truck fit, backing space, receiving, and current conditions.",
+    href: "/resources/prepare-for-an-unfamiliar-commercial-delivery-stop",
+  },
+  {
+    category: "Entrance and Receiving",
+    title: "How to Find the Correct Truck Entrance and Receiving Area",
+    description:
+      "Separate the public address from the gate, check-in point, dock, and unloading area the truck actually needs.",
+    href: "/resources/find-the-correct-truck-entrance-and-receiving-area",
+  },
+  {
+    category: "Delivery Location",
+    title: "Street Address vs. Delivery Zone: What Drivers Actually Need",
+    description:
+      "Understand why reaching the property and reaching the place where the delivery happens are different problems.",
+    href: "/resources/street-address-vs-delivery-zone",
+  },
+  {
+    category: "Fleet Operations",
+    title: "How to Get New Delivery Drivers Up to Speed Faster—Without Starting Every Stop From Zero",
+    description:
+      "Preserve the practical knowledge experienced drivers already have and make it useful to the people learning the route next.",
+    href: "/resources/get-new-delivery-drivers-up-to-speed-faster",
+  },
+] as const;
+
 export const metadata: Metadata = {
   title: "Delivery Driver Resources",
   description,
@@ -50,28 +81,18 @@ export default function ResourcesPage() {
       <section className="relative bg-[#0d1114]">
         <div className="absolute inset-0 sunrise-grid opacity-15" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl px-5 py-16 sm:px-8 lg:py-24">
-          <article className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#111518] shadow-[0_28px_90px_rgba(0,0,0,0.32)]">
-            <div className="p-7 sm:p-10 lg:p-12">
-              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-orange-300">
-                Fleet Operations
-              </p>
-              <h2 className="mt-5 max-w-4xl text-3xl font-semibold leading-tight tracking-[-0.045em] text-balance sm:text-4xl lg:text-5xl">
-                How to Get New Delivery Drivers Up to Speed Faster—Without Starting Every Stop
-                From Zero
-              </h2>
-              <p className="mt-6 max-w-3xl text-base leading-8 text-stone-400 sm:text-lg">
-                Experienced drivers already know which entrances work, where deliveries really
-                happen, and what catches new drivers off guard. Here is how supervisors can keep
-                that knowledge from disappearing.
-              </p>
-              <Link
-                href="/resources/get-new-delivery-drivers-up-to-speed-faster"
-                className="sunrise-button mt-8 inline-flex min-h-13 items-center justify-center rounded-full px-7 py-3.5 text-base font-semibold text-[#120b06] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300"
-              >
-                Read the Guide <span className="ml-2" aria-hidden="true">→</span>
-              </Link>
-            </div>
-          </article>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {resources.map((resource) => (
+              <article key={resource.href} className="flex flex-col rounded-[2rem] border border-white/10 bg-[#111518] p-7 shadow-[0_28px_90px_rgba(0,0,0,0.24)] sm:p-9">
+                <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-orange-300">{resource.category}</p>
+                <h2 className="mt-5 text-2xl font-semibold leading-tight tracking-[-0.04em] text-balance sm:text-3xl">{resource.title}</h2>
+                <p className="mt-5 flex-1 text-base leading-8 text-stone-400">{resource.description}</p>
+                <Link href={resource.href} className="mt-7 inline-flex w-fit items-center rounded-md text-sm font-semibold text-orange-300 hover:text-orange-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-400">
+                  Read the Guide <span className="ml-2" aria-hidden="true">→</span>
+                </Link>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
     </main>

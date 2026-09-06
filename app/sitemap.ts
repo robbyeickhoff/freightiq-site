@@ -10,6 +10,15 @@ const publicRoutes = [
     path: "/resources/get-new-delivery-drivers-up-to-speed-faster",
     lastModified: "2026-09-06",
   },
+  {
+    path: "/resources/prepare-for-an-unfamiliar-commercial-delivery-stop",
+    lastModified: "2026-09-06",
+  },
+  {
+    path: "/resources/find-the-correct-truck-entrance-and-receiving-area",
+    lastModified: "2026-09-06",
+  },
+  { path: "/resources/street-address-vs-delivery-zone", lastModified: "2026-09-06" },
   { path: "/demo", lastModified: "2026-09-06" },
   { path: "/driver", lastModified: "2026-09-06" },
   { path: "/real-example", lastModified: "2026-09-06" },
