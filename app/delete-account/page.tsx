@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Delete Your FreightIQ Account",
   description:
-    "Learn how to permanently delete your FreightIQ account and associated personal data in the app.",
+    "Follow the in-app steps to permanently delete your FreightIQ account, profile, saved personal information, and associated account data.",
   alternates: {
     canonical: "/delete-account",
   },

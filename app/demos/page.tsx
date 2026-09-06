@@ -6,7 +6,7 @@ import { YouTubeEmbed } from "@/components/YouTubeEmbed";
 export const metadata: Metadata = {
   title: "Demo Videos | See FreightIQ in Action",
   description:
-    "Watch FreightIQ demos for delivery drivers, dispatchers, and supervisors. See how drivers prepare for stops, preserve delivery knowledge, and help new drivers get up to speed faster.",
+    "Watch FreightIQ demos showing how delivery drivers prepare for unfamiliar stops, preserve practical knowledge, and help new drivers get up to speed.",
   alternates: {
     canonical: "/demos",
   },

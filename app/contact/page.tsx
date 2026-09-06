@@ -4,7 +4,7 @@ import { ContactForm } from "../../components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact FreightIQ",
   description:
-    "Contact FreightIQ with questions, product feedback, testing support, or partnership inquiries.",
+    "Contact FreightIQ with delivery-driver questions, product feedback, early-access testing support, or potential partnership inquiries.",
   alternates: {
     canonical: "/contact",
   },

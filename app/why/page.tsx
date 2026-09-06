@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
 
 const description =
-  "I’ve been running freight in Western Colorado for 12 years. Here’s why I built FreightIQ—and why practical delivery knowledge should be easier for drivers to save and share.";
+  "Read why a Western Colorado delivery driver built FreightIQ to help drivers preserve practical stop knowledge and share it with whoever arrives next.";
 
 export const metadata: Metadata = {
   title: "Why I Built FreightIQ",
@@ -30,6 +31,17 @@ export const metadata: Metadata = {
 export default function WhyPage() {
   return (
     <main className="overflow-hidden bg-[#090c0f] text-white">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "Why I Built FreightIQ",
+          description,
+          mainEntityOfPage: "https://freightiqapp.com/why",
+          publisher: { "@id": "https://freightiqapp.com/#organization" },
+          image: "https://freightiqapp.com/freightiq-delivery-hero.png",
+        }}
+      />
       <section className="relative border-b border-white/10 bg-[#080b0d]">
         <div className="absolute inset-0 sunrise-grid opacity-35" aria-hidden="true" />
         <div

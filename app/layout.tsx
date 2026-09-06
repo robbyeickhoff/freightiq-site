@@ -51,6 +51,12 @@ export const metadata: Metadata = {
     images: ["/freightiq-sunrise-icon-v1.png"],
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "FreightIQ",
+    description: "Simple, fast maps and real driver intel for smoother deliveries.",
+    images: ["/freightiq-delivery-hero.png"],
+  },
 };
 
 export default function RootLayout({

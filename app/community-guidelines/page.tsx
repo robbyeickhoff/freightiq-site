@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Community Guidelines",
   description:
-    "Read the FreightIQ rules for useful, accurate, respectful, and safe driver contributions.",
+    "Read FreightIQ’s community guidelines for contributing accurate, useful, professional, and safety-conscious delivery information.",
   alternates: { canonical: "/community-guidelines" },
 };
 
