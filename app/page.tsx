@@ -108,6 +108,7 @@ export default function FreightIQLandingPage() {
             "See how delivery drivers use FreightIQ to prepare for an unfamiliar commercial stop.",
           thumbnailUrl: "https://i.ytimg.com/vi/0Yd5yhLpkfw/hqdefault.jpg",
           embedUrl: "https://www.youtube-nocookie.com/embed/0Yd5yhLpkfw",
+          uploadDate: "2026-08-18T05:05:37-07:00",
         }}
       />
       <section className="relative border-b border-white/10 bg-[#080b0d]">

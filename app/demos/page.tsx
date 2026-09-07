@@ -36,6 +36,7 @@ const demos = [
     description:
       "Search a commercial stop, review real Driver Intel, and use satellite view to confirm exactly where to deliver.",
     videoId: "0Yd5yhLpkfw",
+    uploadDate: "2026-08-18T05:05:37-07:00",
     iframeTitle: "FreightIQ demo — real driver intel before you arrive",
   },
   {
@@ -45,6 +46,7 @@ const demos = [
     description:
       "Create a delivery stop, mark its Delivery Zone, and preserve the practical details that make the next arrival easier.",
     videoId: "SF6BbSbLH5Q",
+    uploadDate: "2026-08-18T17:32:58-07:00",
     iframeTitle: "FreightIQ demo — create a delivery stop and add Driver Intel",
   },
   {
@@ -54,6 +56,7 @@ const demos = [
     description:
       "See how reusable stop knowledge can help new drivers understand unfamiliar deliveries without starting from zero.",
     videoId: "RT83Pl9qOaA",
+    uploadDate: "2026-08-20T05:19:57-07:00",
     iframeTitle: "FreightIQ demo — help new delivery drivers get up to speed faster",
     resourceHref: "/resources/get-new-delivery-drivers-up-to-speed-faster",
     resourceLabel: "Read the supervisor guide",
@@ -65,6 +68,7 @@ const demos = [
     description:
       "See how Founding Drivers turn real delivery experience into useful stop knowledge while working toward meaningful program rewards.",
     videoId: "N80FrPgDa58",
+    uploadDate: "2026-08-20T20:27:35-07:00",
     iframeTitle: "FreightIQ Founding Drivers Program — build better stop intel and earn rewards",
   },
 ];
@@ -80,6 +84,7 @@ export default function DemosPage() {
           description: demo.description,
           thumbnailUrl: `https://i.ytimg.com/vi/${demo.videoId}/hqdefault.jpg`,
           embedUrl: `https://www.youtube-nocookie.com/embed/${demo.videoId}`,
+          uploadDate: demo.uploadDate,
         }))}
       />
       <section className="relative border-b border-white/10 bg-[#080b0d]">

@@ -39,6 +39,7 @@ export default function FoundingDriversProgramPage() {
             "See how Founding Drivers build useful delivery-stop knowledge and participate in the FreightIQ program.",
           thumbnailUrl: "https://i.ytimg.com/vi/N80FrPgDa58/hqdefault.jpg",
           embedUrl: "https://www.youtube-nocookie.com/embed/N80FrPgDa58",
+          uploadDate: "2026-08-20T20:27:35-07:00",
         }}
       />
       <section className="relative overflow-hidden border-b border-white/10">
