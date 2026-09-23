@@ -44,18 +44,16 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "FreightIQ",
-    description: "Simple, fast maps and real driver intel for smoother deliveries.",
+    title: "FreightIQ | Real Driver Intel for Better Deliveries",
+    description: "FreightIQ helps local delivery drivers understand where the delivery actually happens, how to approach the stop, and what to expect before arriving.",
     url: "https://freightiqapp.com",
     siteName: "FreightIQ",
-    images: ["/freightiq-sunrise-icon-v1.png"],
+    images: ["/freightiq-social.jpg"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FreightIQ",
-    description: "Simple, fast maps and real driver intel for smoother deliveries.",
-    images: ["/freightiq-delivery-hero.png"],
+    images: ["/freightiq-social.jpg"],
   },
 };
 

@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const siteUrl = "https://freightiqapp.com";
 
 const publicRoutes = [
-  { path: "", lastModified: "2026-09-06" },
+  { path: "", lastModified: "2026-09-23" },
   { path: "/demos", lastModified: "2026-09-06" },
   { path: "/resources", lastModified: "2026-09-06" },
   {
@@ -18,7 +18,7 @@ const publicRoutes = [
     path: "/resources/find-the-correct-truck-entrance-and-receiving-area",
     lastModified: "2026-09-06",
   },
-  { path: "/resources/street-address-vs-delivery-zone", lastModified: "2026-09-06" },
+  { path: "/resources/street-address-vs-delivery-zone", lastModified: "2026-09-23" },
   { path: "/demo", lastModified: "2026-09-06" },
   { path: "/driver", lastModified: "2026-09-06" },
   { path: "/real-example", lastModified: "2026-09-06" },

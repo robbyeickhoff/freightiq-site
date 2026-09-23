@@ -69,9 +69,9 @@ export const metadata: Metadata = {
     siteName: "FreightIQ",
     images: [
       {
-        url: "/freightiq-delivery-hero.png",
-        width: 1672,
-        height: 941,
+        url: "/freightiq-social.jpg",
+        width: 1200,
+        height: 630,
         alt: "A FreightIQ delivery truck approaching a receiving facility at sunrise",
       },
     ],

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: "/early-access",
     images: [
       {
-        url: "/freightiq-delivery-hero.png",
+        url: "/freightiq-social.jpg",
         alt: "A FreightIQ delivery truck approaching a receiving facility at sunrise",
       },
     ],

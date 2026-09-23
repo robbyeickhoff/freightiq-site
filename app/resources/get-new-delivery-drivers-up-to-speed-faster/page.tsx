@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     siteName: "FreightIQ",
     images: [
       {
-        url: "/freightiq-delivery-hero.png",
-        width: 1672,
-        height: 941,
+        url: "/freightiq-social.jpg",
+        width: 1200,
+        height: 630,
         alt: "A FreightIQ delivery truck approaching a receiving facility at sunrise",
       },
     ],
@@ -38,14 +38,16 @@ export default function NewDriverTrainingResourcePage() {
           "@type": "Article",
           headline: title,
           description,
+          author: { "@id": "https://freightiqapp.com/#organization" },
           datePublished: publishedDate,
           dateModified: publishedDate,
           mainEntityOfPage:
             "https://freightiqapp.com/resources/get-new-delivery-drivers-up-to-speed-faster",
           publisher: { "@id": "https://freightiqapp.com/#organization" },
-          image: "https://freightiqapp.com/freightiq-delivery-hero.png",
+          image: "https://freightiqapp.com/freightiq-social.jpg",
         }}
       />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://freightiqapp.com/" }, { "@type": "ListItem", position: 2, name: "Resources", item: "https://freightiqapp.com/resources" }, { "@type": "ListItem", position: 3, name: "New Driver Training", item: "https://freightiqapp.com/resources/get-new-delivery-drivers-up-to-speed-faster" }] }} />
       <section className="relative border-b border-white/10 bg-[#080b0d]">
         <div className="absolute inset-0 sunrise-grid opacity-30" aria-hidden="true" />
         <div className="absolute left-[52%] top-[-15rem] h-[36rem] w-[36rem] rounded-full bg-orange-500/12 blur-3xl" aria-hidden="true" />

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const productLinks = [
+  { href: "/driver", label: "For Drivers" },
   { href: "/demos", label: "Demo Videos" },
   { href: "/demo", label: "How It Works" },
   { href: "/real-example", label: "Real Example" },
@@ -64,7 +65,7 @@ export default function SiteFooter() {
             >
               <Image
                 src="/freightiq-sunrise-icon.png"
-                alt=""
+                alt="FreightIQ"
                 width={48}
                 height={48}
                 className="h-12 w-12 rounded-xl"
@@ -94,9 +95,9 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
               Product
-            </h2>
+            </p>
             <ul className="mt-5 space-y-3 text-sm text-stone-300">
               {productLinks.map((item) => (
                 <li key={item.href}>
@@ -112,9 +113,9 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-400">
               Support
-            </h2>
+            </p>
             <ul className="mt-5 space-y-3 text-sm text-stone-300">
               {supportLinks.map((item) => (
                 <li key={item.href}>

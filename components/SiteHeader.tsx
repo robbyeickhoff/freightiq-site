@@ -47,7 +47,7 @@ export default function SiteHeader() {
         >
           <Image
             src="/freightiq-sunrise-icon.png"
-            alt=""
+            alt="FreightIQ"
             width={44}
             height={44}
             className="h-11 w-11 rounded-xl"

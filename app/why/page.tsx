@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     siteName: "FreightIQ",
     images: [
       {
-        url: "/freightiq-delivery-hero.png",
-        width: 1672,
-        height: 941,
+        url: "/freightiq-social.jpg",
+        width: 1200,
+        height: 630,
         alt: "A FreightIQ delivery truck approaching a receiving facility at sunrise",
       },
     ],
@@ -39,7 +39,7 @@ export default function WhyPage() {
           description,
           mainEntityOfPage: "https://freightiqapp.com/why",
           publisher: { "@id": "https://freightiqapp.com/#organization" },
-          image: "https://freightiqapp.com/freightiq-delivery-hero.png",
+          image: "https://freightiqapp.com/freightiq-social.jpg",
         }}
       />
       <section className="relative border-b border-white/10 bg-[#080b0d]">

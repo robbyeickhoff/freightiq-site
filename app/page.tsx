@@ -19,13 +19,19 @@ export const metadata: Metadata = {
     siteName: "FreightIQ",
     images: [
       {
-        url: "/freightiq-delivery-hero.png",
-        width: 1672,
-        height: 941,
+        url: "/freightiq-social.jpg",
+        width: 1200,
+        height: 630,
         alt: "A FreightIQ delivery truck approaching a receiving facility at sunrise",
       },
     ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FreightIQ | Real Driver Intel for Better Deliveries",
+    description: "FreightIQ helps local delivery drivers understand where the delivery actually happens, how to approach the stop, and what to expect before arriving.",
+    images: ["/freightiq-social.jpg"],
   },
 };
 
@@ -99,6 +105,7 @@ const trustPillars = [
 export default function FreightIQLandingPage() {
   return (
     <main className="overflow-hidden bg-[#090c0f] text-white">
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "SoftwareApplication", name: "FreightIQ", description: "Driver-contributed stop intel for local commercial deliveries, including truck fit, delivery type, backing, and Delivery Zone.", url: "https://freightiqapp.com", applicationCategory: "BusinessApplication", operatingSystem: "iOS, Android", publisher: { "@id": "https://freightiqapp.com/#organization" } }} />
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -114,7 +121,7 @@ export default function FreightIQLandingPage() {
       <section className="relative border-b border-white/10 bg-[#080b0d]">
         <div className="relative h-[23rem] overflow-hidden lg:absolute lg:inset-0 lg:h-auto">
           <Image
-            src="/freightiq-delivery-hero.png"
+            src="/freightiq-delivery-hero.webp"
             alt="A FreightIQ delivery truck approaching a receiving facility at sunrise"
             fill
             priority
@@ -173,6 +180,11 @@ export default function FreightIQLandingPage() {
             use, whether the truck will fit, where to back in, or where receiving is actually
             located. That knowledge usually lives only in the experience of the drivers who have
             already made the delivery.
+            <span className="mt-4 block text-sm text-stone-300">
+              <Link className="text-orange-300 underline underline-offset-4 hover:text-orange-200" href="/resources/street-address-vs-delivery-zone">Street address vs. Delivery Zone</Link>
+              {" · "}
+              <Link className="text-orange-300 underline underline-offset-4 hover:text-orange-200" href="/resources/find-the-correct-truck-entrance-and-receiving-area">Find the truck entrance and receiving area</Link>
+            </span>
           </p>
         </div>
       </section>
@@ -216,6 +228,7 @@ export default function FreightIQLandingPage() {
                     title="FreightIQ demo — real driver intel before you arrive"
                   />
                 </div>
+                <a href="https://www.youtube.com/watch?v=0Yd5yhLpkfw" className="mt-3 block text-center text-xs text-orange-300 underline underline-offset-2 hover:text-orange-200">Watch the demo on YouTube</a>
               </div>
             </article>
 

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description,
     url: canonical,
     siteName: "FreightIQ",
-    images: [{ url: "/freightiq-delivery-hero.png", width: 1672, height: 941, alt: "A FreightIQ delivery truck approaching a receiving facility at sunrise" }],
+    images: [{ url: "/freightiq-social.jpg", width: 1200, height: 630, alt: "A FreightIQ delivery truck approaching a receiving facility at sunrise" }],
     type: "article",
   },
 };
@@ -25,8 +25,9 @@ export const metadata: Metadata = {
 export default function TruckEntrancePage() {
   return (
     <main className="overflow-hidden bg-[#090c0f] text-white">
-      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: title, description, datePublished: publishedDate, dateModified: publishedDate, mainEntityOfPage: `https://freightiqapp.com${canonical}`, publisher: { "@id": "https://freightiqapp.com/#organization" }, image: "https://freightiqapp.com/freightiq-delivery-hero.png" }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "Article", headline: title, description, author: { "@id": "https://freightiqapp.com/#organization" }, datePublished: publishedDate, dateModified: publishedDate, mainEntityOfPage: `https://freightiqapp.com${canonical}`, publisher: { "@id": "https://freightiqapp.com/#organization" }, image: "https://freightiqapp.com/freightiq-social.jpg" }} />
 
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://freightiqapp.com/" }, { "@type": "ListItem", position: 2, name: "Resources", item: "https://freightiqapp.com/resources" }, { "@type": "ListItem", position: 3, name: "Truck Entrance and Receiving", item: "https://freightiqapp.com/resources/find-the-correct-truck-entrance-and-receiving-area" }] }} />
       <section className="relative border-b border-white/10 bg-[#080b0d]">
         <div className="absolute inset-0 sunrise-grid opacity-30" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-24 lg:py-28">
