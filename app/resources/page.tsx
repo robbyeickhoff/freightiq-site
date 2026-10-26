@@ -33,6 +33,13 @@ const resources = [
       "Preserve the practical knowledge experienced drivers already have and make it useful to the people learning the route next.",
     href: "/resources/get-new-delivery-drivers-up-to-speed-faster",
   },
+  {
+    category: "Winter Cab",
+    title: "What to Keep in the Truck for Colorado Winter",
+    description:
+      "A short cab checklist for mountain LTL winters — chains, light, layers, and what to do before you leave the yard.",
+    href: "/resources/what-to-keep-in-the-truck-for-colorado-winter",
+  },
 ] as const;
 
 export const metadata: Metadata = {

@@ -5,7 +5,7 @@ const siteUrl = "https://freightiqapp.com";
 const publicRoutes = [
   { path: "", lastModified: "2026-09-23" },
   { path: "/demos", lastModified: "2026-09-06" },
-  { path: "/resources", lastModified: "2026-09-06" },
+  { path: "/resources", lastModified: "2026-10-26" },
   {
     path: "/resources/get-new-delivery-drivers-up-to-speed-faster",
     lastModified: "2026-09-06",
@@ -19,6 +19,10 @@ const publicRoutes = [
     lastModified: "2026-09-06",
   },
   { path: "/resources/street-address-vs-delivery-zone", lastModified: "2026-09-23" },
+  {
+    path: "/resources/what-to-keep-in-the-truck-for-colorado-winter",
+    lastModified: "2026-10-26",
+  },
   { path: "/demo", lastModified: "2026-09-06" },
   { path: "/driver", lastModified: "2026-09-06" },
   { path: "/real-example", lastModified: "2026-09-06" },
