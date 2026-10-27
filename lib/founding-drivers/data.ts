@@ -1,4 +1,5 @@
 import { requireFoundingDriverAdmin } from "./auth";
+import { loadStopSummaries } from "./stop-data";
 import type {
   Contribution,
   DriverEmailStatus,
@@ -55,12 +56,7 @@ export async function loadFoundingDriverAdminDashboard() {
 
   let stops: StopSummary[] = [];
   if (stopIds.length > 0) {
-    const stopsResult = await supabase
-      .from("mfi_stops")
-      .select("id, name, address")
-      .in("id", stopIds);
-    assertQuerySucceeded(stopsResult.error, "contribution stops");
-    stops = (stopsResult.data ?? []) as StopSummary[];
+    stops = await loadStopSummaries(supabase, stopIds);
   }
 
   const enrolledUserIds = new Set(enrollments.map((item) => item.user_id));
@@ -109,16 +105,14 @@ export async function loadFoundingDriverReviewHistory(requestedPage: number) {
   let profiles: Profile[] = [];
   let stops: StopSummary[] = [];
   if (contributions.length) {
-    const [profilesResult, stopsResult] = await Promise.all([
+    const [profilesResult, stopRows] = await Promise.all([
       supabase.from("profiles").select("id, username, created_at")
         .in("id", [...new Set(contributions.map((item) => item.user_id))]),
-      supabase.from("mfi_stops").select("id, name, address")
-        .in("id", [...new Set(contributions.map((item) => item.stop_id))]),
+      loadStopSummaries(supabase, contributions.map((item) => item.stop_id)),
     ]);
     assertQuerySucceeded(profilesResult.error, "review history profiles");
-    assertQuerySucceeded(stopsResult.error, "review history stops");
     profiles = (profilesResult.data ?? []) as Profile[];
-    stops = (stopsResult.data ?? []) as StopSummary[];
+    stops = stopRows;
   }
   return { contributions, profiles, stops, page, pageCount, total };
 }

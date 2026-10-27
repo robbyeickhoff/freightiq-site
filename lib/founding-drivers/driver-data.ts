@@ -1,4 +1,5 @@
 import { requireFoundingDriver } from "./auth";
+import { loadStopSummaries } from "./stop-data";
 import type {
   Enrollment,
   DriverContribution,
@@ -60,10 +61,10 @@ export async function loadFoundingDriverDashboard() {
   const stopIds = [...new Set(contributions.map((item) => item.stop_id))];
   const leaderboardUsernames = [...new Set(leaderboard.map((item) => item.username))];
 
-  const [stopsResult, leaderboardProfilesResult] = await Promise.all([
+  const [stops, leaderboardProfilesResult] = await Promise.all([
     stopIds.length
-      ? supabase.from("mfi_stops").select("id, name, address").in("id", stopIds)
-      : Promise.resolve({ data: [] as StopSummary[], error: null }),
+      ? loadStopSummaries(supabase, stopIds)
+      : Promise.resolve([] as StopSummary[]),
     leaderboardUsernames.length
       ? supabase
           .from("profiles")
@@ -72,7 +73,6 @@ export async function loadFoundingDriverDashboard() {
       : Promise.resolve({ data: [] as { username: string; profile_image_path: string | null }[], error: null }),
   ]);
 
-  assertQuerySucceeded(stopsResult.error, "your contribution stops");
   assertQuerySucceeded(leaderboardProfilesResult.error, "Founding Driver profile images");
 
   const usernamesWithImages = new Set(
@@ -87,7 +87,7 @@ export async function loadFoundingDriverDashboard() {
     profile: profileResult.data as DriverProfile,
     progress: progressResult.data as DriverProgress,
     contributions,
-    stops: (stopsResult.data ?? []) as StopSummary[],
+    stops,
     leaderboard: leaderboard.map((entry) => ({
       ...entry,
       has_profile_image: usernamesWithImages.has(entry.username),
