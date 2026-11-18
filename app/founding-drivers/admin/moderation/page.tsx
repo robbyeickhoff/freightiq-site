@@ -50,12 +50,17 @@ function readableSubject(subject: Record<string, unknown> | null) {
 export default async function ModerationPage({
   searchParams,
 }: {
-  searchParams: Promise<{ notice?: string; error?: string }>;
+  searchParams: Promise<{ notice?: string; error?: string; security_case?: string }>;
 }) {
   const admin = await getModerationAdminContext();
   if (!admin) redirect("/founding-drivers/sign-in");
 
-  const [{ notice, error }, queue] = await Promise.all([searchParams, loadModerationQueue()]);
+  const params = await searchParams;
+  if (params.security_case && /^[0-9a-f-]{36}$/.test(params.security_case)) {
+    redirect(`/founding-drivers/admin/moderation/security?case=${encodeURIComponent(params.security_case)}`);
+  }
+  const { notice, error } = params;
+  const queue = await loadModerationQueue();
   const openItems = queue.filter((item) => item.status !== "resolved");
   const resolvedItems = queue.filter((item) => item.status === "resolved").reverse();
 
@@ -81,6 +86,7 @@ export default async function ModerationPage({
       </section>
 
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 sm:px-8">
+        <Link className="underline" href="/founding-drivers/admin/moderation/security">Review unusual shared-data reading</Link>
         {notice ? (
           <p
             className="rounded-2xl border border-emerald-400/25 bg-emerald-400/10 px-5 py-4 text-sm text-emerald-100"

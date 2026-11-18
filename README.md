@@ -1,3 +1,54 @@
+## Production release safeguards
+
+This is the separate `robbyeickhoff/freightiq-site` repository; its production branch is `main`.
+The parent mobile repository uses `clean-main`. Do not mix their publishing procedures.
+
+The private security review page is intentional website functionality. It requires a verified
+session and moderator authorization in both the page and server action. Do not remove it because
+the website also has public pages. Security emails depend on the moderation `security_case` link.
+
+Every `npm run build` runs security/access regression tests and checks that the built private
+security route, privacy policy, and training route are present. A failed check blocks the build.
+Do not bypass these checks with a custom `next build` deployment command.
+
+Release only reviewed, committed source from this repository. Never publish uncommitted files
+from a temporary directory: that caused approved security functionality to disappear in later
+Git-based releases. Keep unrelated dirty files out of commits. When restoring an older deployment,
+reconcile its source into Git before the next release; a successful deployment is not evidence
+that all prior functionality survived.
+
+Before publishing: run `npm ci`, `npm run build`, focused lint, and review the exact staged diff.
+After publishing: confirm the production deployment commit and run
+`node scripts/check-live-security.mjs https://freightiqapp.com`.
+Check authorized moderator access separately in a signed-in browser. Never exercise pause/restore
+on a real account merely to smoke-test a release. Preserve training files unless explicitly in scope.
+
+The website does not deploy database migrations. Verify live bot settings separately; do not
+alter quotas, retention, grants, or notification recipients during website releases.
+
+### November 18, 2026 security restoration
+
+Restores the previously approved private security page/actions, moderation email-link routing,
+and October 5 privacy disclosures into Git. Training source is unchanged from `668c69b`.
+The unrelated local referral-page edit and `design-qa.md` are excluded from this release.
+Next.js/eslint-config-next are pinned to 16.4.6; nanoid and source-map-js lock entries are patched.
+Production dependency audit has zero findings; the full audit still reports development-tool
+findings, which are not represented as resolved by this release.
+
+Pre-release verification: eight behavioral/access/disclosure tests, production build and route
+manifest checks, TypeScript, focused ESLint, and local HTTP smoke checks passed. Tests replace
+external boundaries; they do not send emails or alter real security cases.
+
+Read-only production checks on `finjqunyuyfxiesumuxk` confirmed both read guards, detection, and
+mail enabled; fresh worker; healthy recording/backlog/retention; confirmed recipient
+`hello@freightiqapp.com`; all 22 reviewed legacy reader functions and direct table/column reads
+on five protected tables denied to both anon and authenticated roles. Guard internals cannot
+be executed directly by those roles. An actual unauthorized case-list call was denied with
+`42501: Moderator access required`. No thresholds, database records, permissions, or schedules
+were changed. These checks verify the existing controls, not immunity to every scraping strategy.
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
