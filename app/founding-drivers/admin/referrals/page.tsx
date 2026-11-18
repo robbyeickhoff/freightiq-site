@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getFoundingDriverAdminContext } from "@/lib/founding-drivers/auth";
-import { loadStopSummaries } from "@/lib/founding-drivers/stop-data";
 import { markRewardPaid, qualifyReferral, reviewReferralContribution } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -29,17 +28,17 @@ function formatSubmitted(value:string) {
 export default async function ReferralAdminPage({ searchParams }:{ searchParams:Promise<{notice?:string;error?:string}> }) {
   const admin = await getFoundingDriverAdminContext();
   if (!admin) redirect("/founding-drivers/sign-in");
-  const [{notice,error}, progressResult, contributionsResult, rewardsResult] = await Promise.all([
+  const [{notice,error}, progressResult, contributionsResult, rewardsResult, stopsResult] = await Promise.all([
     searchParams,
     admin.supabase.rpc("get_referral_progress"),
     admin.supabase.from("referral_stop_contributions").select("id,referral_id,stop_id,contribution_type,completed_fields,core_snapshot,review_status,review_note,submitted_at").order("submitted_at"),
     admin.supabase.from("referral_rewards").select("id,referral_id,reward_role,payment_status,amount_cents"),
+    admin.supabase.from("mfi_stops").select("id,name,address,lat,lng"),
   ]);
   const progress=(progressResult.data??[]) as Progress[];
   const contributions=(contributionsResult.data??[]) as Contribution[];
   const rewards=(rewardsResult.data??[]) as Reward[];
-  const stopRows = await loadStopSummaries(admin.supabase, contributions.map((item) => item.stop_id));
-  const stops=new Map((stopRows as Stop[]).map((stop)=>[stop.id,stop]));
+  const stops=new Map(((stopsResult.data??[]) as Stop[]).map((stop)=>[stop.id,stop]));
 
   return <main className="min-h-screen bg-[#090c0f] px-5 py-10 text-white sm:px-8">
     <div className="mx-auto max-w-6xl">
