@@ -65,14 +65,15 @@ const serviceProviders = [
   { name: "Apple Maps or Google Maps", purpose: "map display and interactions" },
   {
     name: "Resend",
-    purpose: "Contact, Early Access, and Founding Drivers Program notification emails",
+    purpose: "Contact, Early Access, Founding Drivers Program, and security notification emails",
   },
+  { name: "UptimeRobot", purpose: "service health monitoring and operational alerts" },
   { name: "Vercel", purpose: "public website hosting" },
 ];
 
 const userChoices = [
   "Update your username and tractor type through your FreightIQ profile",
-  "Disable foreground location through your device settings",
+  "Stop Driving Alerts in the app or change location permissions through your device settings",
   "Clear locally cached stop information through the app",
 ];
 
@@ -132,13 +133,13 @@ export default function PrivacyPolicyPage() {
               <dl className="mt-5 grid grid-cols-2 gap-5">
                 <div>
                   <dt className="text-xs uppercase tracking-[0.14em] text-stone-500">Effective</dt>
-                  <dd className="mt-1.5 text-sm font-semibold text-stone-100">July 2026</dd>
+                  <dd className="mt-1.5 text-sm font-semibold text-stone-100">October 5, 2026</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-[0.14em] text-stone-500">
                     Last updated
                   </dt>
-                  <dd className="mt-1.5 text-sm font-semibold text-stone-100">July 2026</dd>
+                  <dd className="mt-1.5 text-sm font-semibold text-stone-100">October 5, 2026</dd>
                 </div>
               </dl>
             </div>
@@ -167,12 +168,14 @@ export default function PrivacyPolicyPage() {
               </article>
               <article className="rounded-[1.35rem] border border-white/10 bg-white/[0.035] p-5">
                 <p className="text-sm font-semibold text-white">
-                  Foreground location, not a history
+                  Location for maps and optional alerts
                 </p>
                 <p className="mt-2 text-sm leading-6 text-stone-400">
                   FreightIQ uses foreground location to center the map, provide nearby search
-                  results, and identify a nearby Operations update while the app is open. FreightIQ
-                  does not intentionally maintain continuous device-location history.
+                  results, and identify a nearby Operations update while the app is open. When you
+                  enable Driving Alerts and grant permission, background location also supports
+                  nearby-condition notifications. FreightIQ does not intentionally maintain
+                  continuous server-side device-location history.
                 </p>
               </article>
               <article className="rounded-[1.35rem] border border-orange-400/20 bg-orange-400/[0.07] p-5">
@@ -251,6 +254,15 @@ export default function PrivacyPolicyPage() {
                       your position while you use the app.
                     </p>
                     <p className="mt-3">
+                      When you choose Start Alerts and grant the required permissions, FreightIQ
+                      uses background location to check for nearby Operations conditions and issue
+                      notifications, including while the app is not in the foreground. You can stop
+                      alerts in the app or revoke location permission in device settings. The app
+                      keeps local alert-session, condition, and encounter state; this is separate
+                      from shared stop information and does not mean FreightIQ maintains a continuous
+                      server-side location trail.
+                    </p>
+                    <p className="mt-3">
                       When you use map search, your search text and the current map-center
                       coordinates—which may reflect your location—are sent to Mapbox to provide
                       nearby results. Apple or Google may also process map interactions through
@@ -321,6 +333,26 @@ export default function PrivacyPolicyPage() {
                       standard technical information needed to operate and protect their services,
                       such as IP addresses, device or browser information, request timestamps, and
                       diagnostic logs.
+                    </p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-stone-950">
+                      Protecting shared information
+                    </h3>
+                    <p className="mt-2">
+                      To detect and limit automated collection of shared information, FreightIQ
+                      records request types, timing, counts, amounts of information returned,
+                      temporary reading restrictions, and security review decisions. Some observation
+                      records include coarse map areas and search-length categories, not search wording
+                      or exact locations. Coded account, session, and information identifiers help
+                      recognize repeated activity. These records are pseudonymous, not anonymous.
+                    </p>
+                    <p className="mt-3">
+                      This security accounting does not store raw stop or report identifiers, report
+                      contents, contacts, private notes, IP addresses, or device identifiers.
+                      Infrastructure providers may separately process the technical information
+                      described above. Authorized moderators review unusual activity and can
+                      temporarily pause shared reading; unusual activity alone is not proof of abuse.
                     </p>
                   </div>
                 </PolicySection>
@@ -404,6 +436,16 @@ export default function PrivacyPolicyPage() {
                 </PolicySection>
 
                 <PolicySection id="retention-and-deletion" title="Retention and account deletion">
+                  <p>
+                    Short-lived security counters and repeat-read identifiers normally expire within
+                    two hours. Observation records and security review cases, decisions, and queued
+                    notification records normally expire after 30 days. Scheduled cleanup removes
+                    expired records, so deletion is not necessarily immediate at the expiration time.
+                    Observation records may remain through their normal retention period after an
+                    account is deleted. Notification-provider records, delivered email copies, and
+                    backups have separate retention lifecycles; deleting an application record does
+                    not automatically remove those copies.
+                  </p>
                   <p>
                     FreightIQ retains information while an account is active and as reasonably
                     necessary to operate the service, respond to requests, maintain security, and
